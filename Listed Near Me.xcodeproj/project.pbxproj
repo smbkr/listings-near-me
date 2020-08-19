@@ -15,6 +15,10 @@
 		B0FB41E324EDAEAE00619CD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FB41E124EDAEAE00619CD4 /* LaunchScreen.storyboard */; };
 		B0FB41EE24EDAEAF00619CD4 /* Listed_Near_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41ED24EDAEAF00619CD4 /* Listed_Near_MeTests.swift */; };
 		B0FB41F924EDAEAF00619CD4 /* Listed_Near_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41F824EDAEAF00619CD4 /* Listed_Near_MeUITests.swift */; };
+		B0FB420724EDAFD400619CD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420624EDAFD400619CD4 /* API.swift */; };
+		B0FB420924EDB00200619CD4 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420824EDB00200619CD4 /* Listing.swift */; };
+		B0FB420C24EDB04600619CD4 /* LongLat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420B24EDB04600619CD4 /* LongLat.swift */; };
+		B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420D24EDB06D00619CD4 /* Grade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		B0FB41F424EDAEAF00619CD4 /* Listed Near MeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Listed Near MeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FB41F824EDAEAF00619CD4 /* Listed_Near_MeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listed_Near_MeUITests.swift; sourceTree = "<group>"; };
 		B0FB41FA24EDAEAF00619CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0FB420624EDAFD400619CD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B0FB420824EDB00200619CD4 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		B0FB420B24EDB04600619CD4 /* LongLat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongLat.swift; sourceTree = "<group>"; };
+		B0FB420D24EDB06D00619CD4 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,8 @@
 				B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */,
 				B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */,
 				B0FB41DA24EDAEAC00619CD4 /* ViewController.swift */,
+				B0FB420624EDAFD400619CD4 /* API.swift */,
+				B0FB420A24EDB00700619CD4 /* Models */,
 				B0FB41DC24EDAEAC00619CD4 /* Main.storyboard */,
 				B0FB41DF24EDAEAE00619CD4 /* Assets.xcassets */,
 				B0FB41E124EDAEAE00619CD4 /* LaunchScreen.storyboard */,
@@ -126,6 +136,16 @@
 				B0FB41FA24EDAEAF00619CD4 /* Info.plist */,
 			);
 			path = "Listed Near MeUITests";
+			sourceTree = "<group>";
+		};
+		B0FB420A24EDB00700619CD4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0FB420824EDB00200619CD4 /* Listing.swift */,
+				B0FB420D24EDB06D00619CD4 /* Grade.swift */,
+				B0FB420B24EDB04600619CD4 /* LongLat.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +281,10 @@
 			files = (
 				B0FB41DB24EDAEAC00619CD4 /* ViewController.swift in Sources */,
 				B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */,
+				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
+				B0FB420C24EDB04600619CD4 /* LongLat.swift in Sources */,
+				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
+				B0FB420724EDAFD400619CD4 /* API.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
