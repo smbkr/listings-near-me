@@ -8,8 +8,16 @@
 
 import Foundation
 
-enum Grade: String {
+enum Grade: String, CustomStringConvertible {
     case I = "I"
     case II = "II"
     case IIs = "II*"
+    
+    var description: String {
+        switch self {
+            case .I: return "I"
+            case .II: return "II"
+            case .IIs: return "II*"
+        }
+    }
 }

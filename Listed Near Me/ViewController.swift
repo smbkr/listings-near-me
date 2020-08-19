@@ -17,8 +17,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listing = self.listings[indexPath.row]
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: listing.name)
         cell.textLabel?.text = listing.name
+        if let grade = listing.grade {
+        cell.detailTextLabel?.text = "Grade: \(grade)"
+        }
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
