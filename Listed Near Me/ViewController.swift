@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     private var listings: [Listing] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,8 +31,18 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let api = API()
-        self.listings = api.getAll()
+        let api = APIService()
+        api.getAll() { (result) in
+            switch result {
+                case .success(let listings):
+                    self.listings = listings
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error) // TODO: Better error handling
+            }
+        }
     }
 
 }

@@ -8,11 +8,13 @@
 
 import Foundation
 
-enum Grade: String, CustomStringConvertible {
+enum Grade: String, Codable {
     case I = "I"
     case II = "II"
     case IIs = "II*"
-    
+}
+
+extension Grade: CustomStringConvertible {
     var description: String {
         switch self {
             case .I: return "I"

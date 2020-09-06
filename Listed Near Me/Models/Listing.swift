@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Listing {
+struct Listing: Codable {
     var name: String
-    var longLat: LongLat
+    var location: Location
     var grade: Grade?
 }
