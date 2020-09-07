@@ -17,7 +17,7 @@
 		B0FB41F924EDAEAF00619CD4 /* Listed_Near_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41F824EDAEAF00619CD4 /* Listed_Near_MeUITests.swift */; };
 		B0FB420724EDAFD400619CD4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420624EDAFD400619CD4 /* APIService.swift */; };
 		B0FB420924EDB00200619CD4 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420824EDB00200619CD4 /* Listing.swift */; };
-		B0FB420C24EDB04600619CD4 /* LongLat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420B24EDB04600619CD4 /* LongLat.swift */; };
+		B0FB420C24EDB04600619CD4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420B24EDB04600619CD4 /* Location.swift */; };
 		B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420D24EDB06D00619CD4 /* Grade.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,7 @@
 		B0FB41FA24EDAEAF00619CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0FB420624EDAFD400619CD4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		B0FB420824EDB00200619CD4 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
-		B0FB420B24EDB04600619CD4 /* LongLat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongLat.swift; sourceTree = "<group>"; };
+		B0FB420B24EDB04600619CD4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B0FB420D24EDB06D00619CD4 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +143,7 @@
 			children = (
 				B0FB420824EDB00200619CD4 /* Listing.swift */,
 				B0FB420D24EDB06D00619CD4 /* Grade.swift */,
-				B0FB420B24EDB04600619CD4 /* LongLat.swift */,
+				B0FB420B24EDB04600619CD4 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				B0FB41DB24EDAEAC00619CD4 /* ViewController.swift in Sources */,
 				B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */,
 				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
-				B0FB420C24EDB04600619CD4 /* LongLat.swift in Sources */,
+				B0FB420C24EDB04600619CD4 /* Location.swift in Sources */,
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
 				B0FB420724EDAFD400619CD4 /* APIService.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
