@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vTC-ib-615">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vTC-ib-615">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,14 +10,31 @@
         <!--Map View-->
         <scene sceneID="k2f-Ue-p1Y">
             <objects>
-                <viewController id="HIF-ZH-5iX" userLabel="Map View" sceneMemberID="viewController">
+                <viewController id="HIF-ZH-5iX" userLabel="Map View" customClass="MapViewController" customModule="Listed_Near_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uha-Ab-WKi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWO-qm-SLy">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HIF-ZH-5iX" id="HdJ-Dj-mDX"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gWO-qm-SLy" firstAttribute="leading" secondItem="Vof-08-6at" secondAttribute="leading" id="HEO-m1-pUx"/>
+                            <constraint firstItem="Vof-08-6at" firstAttribute="trailing" secondItem="gWO-qm-SLy" secondAttribute="trailing" id="Lgz-bU-drR"/>
+                            <constraint firstItem="gWO-qm-SLy" firstAttribute="top" secondItem="Vof-08-6at" secondAttribute="top" id="hu0-bM-rA1"/>
+                            <constraint firstItem="Vof-08-6at" firstAttribute="bottom" secondItem="gWO-qm-SLy" secondAttribute="bottom" id="kyk-jL-Z1M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Vof-08-6at"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="UfV-re-cAu"/>
+                    <connections>
+                        <outlet property="mapView" destination="gWO-qm-SLy" id="sMA-HY-Olj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hQ-M1-oVA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -33,8 +50,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aLP-Qg-JM7"/>
                         <segue destination="HIF-ZH-5iX" kind="relationship" relationship="viewControllers" id="x8m-9f-YMG"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aLP-Qg-JM7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPH-t8-cng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -44,7 +61,7 @@
         <!--List View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="List View" customClass="ViewController" customModule="Listed_Near_Me" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="List View" customClass="ListViewController" customModule="Listed_Near_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

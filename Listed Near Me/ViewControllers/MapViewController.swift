@@ -1,21 +1,20 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  Listed Near Me
 //
-//  Created by Stuart Baker on 19/08/2020.
+//  Created by Stuart Baker on 08/09/2020.
 //  Copyright © 2020 Stuart Baker. All rights reserved.
 //
 
 import UIKit
 import MapKit
 
-class ListViewController: UIViewController {
+class MapViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
     
-    private var listings: [Listing] = []
-    private let api = APIService()
-    private let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
+    let api = APIService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,34 +23,24 @@ class ListViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
-
-    @IBAction func refreshLocation(_ sender: Any) {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-    }
     
-}
-
-extension ListViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listings.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let listing = self.listings[indexPath.row]
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: listing.name)
-        cell.textLabel?.text = listing.name
-        if let grade = listing.grade {
-        cell.detailTextLabel?.text = "Grade: \(grade)"
+    func refreshListings(_ updatedListings: [Listing]) {
+        mapView.removeAnnotations(mapView.annotations)
+        for listing in updatedListings {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(
+                latitude: listing.location.lat, longitude: listing.location.long
+            )
+            annotation.title = listing.name
+            if let grade = listing.grade {
+                annotation.subtitle = "Grade \(grade)"
+            }
+            mapView.addAnnotation(annotation)
         }
-        cell.accessoryType = .disclosureIndicator
-        return cell
     }
-    
 }
 
-extension ListViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -64,13 +53,16 @@ extension ListViewController: CLLocationManagerDelegate {
             print("Something is wrong with the location") // TODO: Better error handling
             return
         }
-        print("\(location)")
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+        
         self.api.getNear(location) { (result) in
              switch result {
                  case .success(let listings):
-                     self.listings = listings
                      DispatchQueue.main.async {
-                         self.tableView.reloadData()
+                        self.refreshListings(listings)
                      }
                  case .failure(let error):
                      print(error) // TODO: Better error handling

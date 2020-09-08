@@ -9,6 +9,6 @@
 import Foundation
 
 struct Location: Codable {
-    var long: Float
-    var lat: Float
+    var long: Double
+    var lat: Double
 }
