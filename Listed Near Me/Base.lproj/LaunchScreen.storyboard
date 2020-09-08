@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +12,31 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fy-5y-uM0">
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Map" selectedImage="map" catalog="system" id="gXX-n9-ksD"/>
+                                    <tabBarItem title="List" selectedImage="book" catalog="system" id="xFm-5v-Tp3"/>
+                                </items>
+                            </tabBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PD0-uH-sJD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6fy-5y-uM0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2dB-1m-dXi"/>
+                            <constraint firstItem="6fy-5y-uM0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Qs2-0c-bVc"/>
+                            <constraint firstItem="PD0-uH-sJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eJ4-0i-bK8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PD0-uH-sJD" secondAttribute="trailing" id="f1F-ea-ULS"/>
+                            <constraint firstItem="6fy-5y-uM0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tXC-58-xqa"/>
+                            <constraint firstItem="PD0-uH-sJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wBM-2j-imr"/>
+                            <constraint firstItem="6fy-5y-uM0" firstAttribute="top" secondItem="PD0-uH-sJD" secondAttribute="bottom" id="x7B-aG-zvW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +45,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="map" catalog="system" width="128" height="113"/>
+    </resources>
 </document>
