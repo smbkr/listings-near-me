@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class APIService {
     
@@ -37,11 +38,11 @@ class APIService {
         }.resume()
     }
     
-    func getNear(_ location: Location, completion: @escaping (Result<[Listing], Error>) -> Void) {
+    func getNear(_ location: CLLocation, completion: @escaping (Result<[Listing], Error>) -> Void) {
         var url = createURLComponents(for: "near")
         url.queryItems = [
-            URLQueryItem(name: "long", value: String(location.long)),
-            URLQueryItem(name: "lat", value: String(location.lat))
+            URLQueryItem(name: "long", value: String(location.coordinate.longitude)),
+            URLQueryItem(name: "lat", value: String(location.coordinate.latitude))
         ]
         
         guard let validUrl = url.url else {
@@ -73,4 +74,5 @@ class APIService {
         
         return url
     }
+    
 }
