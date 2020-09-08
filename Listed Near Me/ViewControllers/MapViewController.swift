@@ -31,7 +31,7 @@ class MapViewController: UIViewController {
             annotation.coordinate = CLLocationCoordinate2D(
                 latitude: listing.location.lat, longitude: listing.location.long
             )
-            annotation.title = listing.name
+            annotation.title = listing.name.capitalized
             if let grade = listing.grade {
                 annotation.subtitle = "Grade \(grade)"
             }
