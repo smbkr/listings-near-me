@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B0791A932507F8B500C9F265 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0791A922507F8B500C9F265 /* MapViewController.swift */; };
+		B0AB17CD250FFCF300746C3C /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */; };
+		B0AB17CF251003B700746C3C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17CE251003B700746C3C /* DetailViewController.swift */; };
 		B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */; };
 		B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */; };
-		B0FB41DB24EDAEAC00619CD4 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41DA24EDAEAC00619CD4 /* ListViewController.swift */; };
+		B0FB41DB24EDAEAC00619CD4 /* ListingResultsViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewcontroller.swift */; };
 		B0FB41DE24EDAEAC00619CD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FB41DC24EDAEAC00619CD4 /* Main.storyboard */; };
 		B0FB41E024EDAEAE00619CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FB41DF24EDAEAE00619CD4 /* Assets.xcassets */; };
 		B0FB41E324EDAEAE00619CD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FB41E124EDAEAE00619CD4 /* LaunchScreen.storyboard */; };
 		B0FB41EE24EDAEAF00619CD4 /* Listed_Near_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41ED24EDAEAF00619CD4 /* Listed_Near_MeTests.swift */; };
 		B0FB41F924EDAEAF00619CD4 /* Listed_Near_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41F824EDAEAF00619CD4 /* Listed_Near_MeUITests.swift */; };
-		B0FB420724EDAFD400619CD4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420624EDAFD400619CD4 /* APIService.swift */; };
+		B0FB420724EDAFD400619CD4 /* ListingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420624EDAFD400619CD4 /* ListingsAPI.swift */; };
 		B0FB420924EDB00200619CD4 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420824EDB00200619CD4 /* Listing.swift */; };
 		B0FB420C24EDB04600619CD4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420B24EDB04600619CD4 /* Location.swift */; };
 		B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420D24EDB06D00619CD4 /* Grade.swift */; };
@@ -40,11 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B0791A922507F8B500C9F265 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
+		B0AB17CE251003B700746C3C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B0FB41D324EDAEAC00619CD4 /* Listed Near Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Listed Near Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B0FB41DA24EDAEAC00619CD4 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingResultsViewcontroller.swift; sourceTree = "<group>"; };
 		B0FB41DD24EDAEAC00619CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0FB41DF24EDAEAE00619CD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0FB41E224EDAEAE00619CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 		B0FB41F424EDAEAF00619CD4 /* Listed Near MeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Listed Near MeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FB41F824EDAEAF00619CD4 /* Listed_Near_MeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listed_Near_MeUITests.swift; sourceTree = "<group>"; };
 		B0FB41FA24EDAEAF00619CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0FB420624EDAFD400619CD4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		B0FB420624EDAFD400619CD4 /* ListingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsAPI.swift; sourceTree = "<group>"; };
 		B0FB420824EDB00200619CD4 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 		B0FB420B24EDB04600619CD4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B0FB420D24EDB06D00619CD4 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
@@ -86,13 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B0791A902507F86200C9F265 /* ViewControllers */ = {
+		B0AB17D225100A1A00746C3C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B0FB41DA24EDAEAC00619CD4 /* ListViewController.swift */,
-				B0791A922507F8B500C9F265 /* MapViewController.swift */,
+				B0FB41DF24EDAEAE00619CD4 /* Assets.xcassets */,
+				B0FB41DC24EDAEAC00619CD4 /* Main.storyboard */,
+				B0FB41E124EDAEAE00619CD4 /* LaunchScreen.storyboard */,
 			);
-			path = ViewControllers;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B0FB41CA24EDAEAC00619CD4 = {
@@ -118,15 +121,15 @@
 		B0FB41D524EDAEAC00619CD4 /* Listed Near Me */ = {
 			isa = PBXGroup;
 			children = (
-				B0791A902507F86200C9F265 /* ViewControllers */,
+				B0FB41E424EDAEAE00619CD4 /* Info.plist */,
 				B0FB420A24EDB00700619CD4 /* Models */,
 				B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */,
 				B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */,
-				B0FB420624EDAFD400619CD4 /* APIService.swift */,
-				B0FB41DC24EDAEAC00619CD4 /* Main.storyboard */,
-				B0FB41DF24EDAEAE00619CD4 /* Assets.xcassets */,
-				B0FB41E124EDAEAE00619CD4 /* LaunchScreen.storyboard */,
-				B0FB41E424EDAEAE00619CD4 /* Info.plist */,
+				B0AB17CE251003B700746C3C /* DetailViewController.swift */,
+				B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewcontroller.swift */,
+				B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */,
+				B0FB420624EDAFD400619CD4 /* ListingsAPI.swift */,
+				B0AB17D225100A1A00746C3C /* Resources */,
 			);
 			path = "Listed Near Me";
 			sourceTree = "<group>";
@@ -290,14 +293,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0FB41DB24EDAEAC00619CD4 /* ListViewController.swift in Sources */,
+				B0AB17CF251003B700746C3C /* DetailViewController.swift in Sources */,
+				B0FB41DB24EDAEAC00619CD4 /* ListingResultsViewcontroller.swift in Sources */,
+				B0AB17CD250FFCF300746C3C /* SearchSuggestionsViewController.swift in Sources */,
 				B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */,
 				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
 				B0FB420C24EDB04600619CD4 /* Location.swift in Sources */,
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
-				B0FB420724EDAFD400619CD4 /* APIService.swift in Sources */,
+				B0FB420724EDAFD400619CD4 /* ListingsAPI.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
-				B0791A932507F8B500C9F265 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

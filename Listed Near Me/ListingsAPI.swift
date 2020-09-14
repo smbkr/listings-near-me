@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class APIService {
+class ListingsAPI {
     
     private let scheme = "http"
     private let hostname = "localhost"
@@ -50,17 +50,18 @@ class APIService {
         }
         
         URLSession.shared.dataTask(with: validUrl) { (data, response, error) in
-            // TOOD: reduce duplication
+            // TOOD: reduce duplication with the getAll method
             guard let validData = data, error == nil else {
-                 completion(.failure(error!))
-                 return
+                completion(.failure(error!))
+                return
              }
              
             do {
-                 let listings = try JSONDecoder().decode([Listing].self, from: validData)
-                 completion(.success(listings))
+                let listings = try JSONDecoder().decode([Listing].self, from: validData)
+                completion(.success(listings))
              } catch let serializationError {
-                 completion(.failure(serializationError))
+                print(validData)
+                completion(.failure(serializationError))
              }
         }.resume()
     }
