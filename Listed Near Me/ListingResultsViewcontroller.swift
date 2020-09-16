@@ -88,12 +88,9 @@ extension ListingResultsViewcontroller: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listing = self.listings[indexPath.row]
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "listing")
-        cell.textLabel?.text = listing.name
-        if let grade = listing.grade {
-            cell.detailTextLabel?.text = "Grade: \(grade)"
-        }
-        cell.accessoryType = .disclosureIndicator
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listing") as! ListingTableViewCell
+        cell.listing = listing
+
         return cell
     }
     
