@@ -42,12 +42,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meS-TY-IAk">
-                                                    <rect key="frame" x="70" y="11" width="314" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQe-du-Di9">
                                                     <rect key="frame" x="10" y="10" width="50" height="50"/>
                                                     <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,16 +58,31 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meS-TY-IAk">
+                                                    <rect key="frame" x="70" y="11" width="314" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.2 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nad-50-00P">
+                                                    <rect key="frame" x="70" y="34" width="46.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="meS-TY-IAk" firstAttribute="leading" secondItem="LQe-du-Di9" secondAttribute="trailing" constant="10" id="A6y-Jm-rA7"/>
                                                 <constraint firstItem="LQe-du-Di9" firstAttribute="leading" secondItem="MnJ-o2-lR6" secondAttribute="leading" constant="10" id="LCA-Gb-4zm"/>
+                                                <constraint firstItem="nad-50-00P" firstAttribute="top" secondItem="meS-TY-IAk" secondAttribute="bottom" constant="2" id="O3h-Tm-D5r"/>
                                                 <constraint firstItem="meS-TY-IAk" firstAttribute="top" secondItem="MnJ-o2-lR6" secondAttribute="topMargin" id="Ovo-hz-lpC"/>
                                                 <constraint firstItem="LQe-du-Di9" firstAttribute="centerY" secondItem="MnJ-o2-lR6" secondAttribute="centerY" id="i9Z-dY-1lM"/>
+                                                <constraint firstItem="nad-50-00P" firstAttribute="leading" secondItem="meS-TY-IAk" secondAttribute="leading" id="lrQ-pm-VjG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="meS-TY-IAk" secondAttribute="trailing" constant="10" id="ufk-A6-fsv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="distanceLabel" destination="nad-50-00P" id="6eq-zr-KtE"/>
                                             <outlet property="gradeLabel" destination="LQe-du-Di9" id="wcr-Fh-E93"/>
                                             <outlet property="nameLabel" destination="meS-TY-IAk" id="SSH-N1-LnN"/>
                                         </connections>

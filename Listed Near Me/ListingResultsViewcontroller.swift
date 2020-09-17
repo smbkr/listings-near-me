@@ -89,7 +89,13 @@ extension ListingResultsViewcontroller: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listing = self.listings[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "listing") as! ListingTableViewCell
-        cell.listing = listing
+        cell.updateListing(listing)
+        
+        if let currentLocation = self.currentLocation {
+            let listingLocation = CLLocation(latitude: listing.location.lat, longitude: listing.location.long)
+            let distance = listingLocation.distance(from: currentLocation)
+            cell.updateDistance(distance)
+        }
 
         return cell
     }
