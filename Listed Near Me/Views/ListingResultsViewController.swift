@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ListingResultsViewcontroller: UIViewController {
+class ListingResultsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -75,7 +75,7 @@ class ListingResultsViewcontroller: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == showDetailView,
             let indexPath = tableView.indexPathForSelectedRow,
-            let detailViewController = segue.destination as? DetailViewController
+            let detailViewController = segue.destination as? ListingDetailViewController
             else {
                 return
             }
@@ -85,7 +85,7 @@ class ListingResultsViewcontroller: UIViewController {
     
 }
 
-extension ListingResultsViewcontroller: UITableViewDataSource, UITableViewDelegate {
+extension ListingResultsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.listings.count
@@ -111,7 +111,7 @@ extension ListingResultsViewcontroller: UITableViewDataSource, UITableViewDelega
     
 }
 
-extension ListingResultsViewcontroller: CLLocationManagerDelegate {
+extension ListingResultsViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
