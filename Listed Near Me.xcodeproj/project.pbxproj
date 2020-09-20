@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */; };
 		B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */; };
+		B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */; };
+		B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */; };
 		B0AB17CD250FFCF300746C3C /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */; };
 		B0AB17CF251003B700746C3C /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17CE251003B700746C3C /* ListingDetailViewController.swift */; };
 		B0AB17D42512603900746C3C /* ListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17D32512603900746C3C /* ListingTableViewCell.swift */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+RoundedToPlaces.swift"; sourceTree = "<group>"; };
 		B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocationDistance+HumanReadable.swift"; path = "Listed Near Me/CLLocationDistance+HumanReadable.swift"; sourceTree = SOURCE_ROOT; };
+		B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+cornerRadius.swift"; sourceTree = "<group>"; };
+		B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+cornerRadius.swift"; sourceTree = "<group>"; };
 		B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		B0AB17CE251003B700746C3C /* ListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
 		B0AB17D32512603900746C3C /* ListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingTableViewCell.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				B0AB17CE251003B700746C3C /* ListingDetailViewController.swift */,
 				B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */,
 				B0AB17D32512603900746C3C /* ListingTableViewCell.swift */,
+				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
+				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,9 +323,11 @@
 				B0AB17CD250FFCF300746C3C /* SearchSuggestionsViewController.swift in Sources */,
 				B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */,
 				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
+				B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */,
 				B0FB420C24EDB04600619CD4 /* Location.swift in Sources */,
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
 				B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */,
+				B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */,
 				B0FB420724EDAFD400619CD4 /* ListingsAPI.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
 			);

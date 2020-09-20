@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        configureAppearance()
+        
         return true
+    }
+    
+    func configureAppearance() -> Void {
+        UIButton.appearance().cornerRadius = 8;
+        MKMapView.appearance().cornerRadius = 8;
     }
 
     // MARK: UISceneSession Lifecycle
