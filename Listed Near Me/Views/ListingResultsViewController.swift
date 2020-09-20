@@ -13,7 +13,7 @@ class ListingResultsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let showDetailView = "showDetailView"
+    private let showDetailViewSegue = "showDetailView"
     private var listings: [Listing] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -73,14 +73,21 @@ class ListingResultsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == showDetailView,
+        guard segue.identifier == showDetailViewSegue,
             let indexPath = tableView.indexPathForSelectedRow,
-            let detailViewController = segue.destination as? ListingDetailViewController
+            let detailViewController = segue.destination as? DetailViewController
             else {
                 return
             }
         let listing = listings[indexPath.row]
         detailViewController.listing = listing
+        detailViewController.distance = listingDistanceFromCurrentLocation(listing)
+    }
+    
+    private func listingDistanceFromCurrentLocation(_ listing: Listing) -> CLLocationDistance? {
+        guard let currentLocation = self.currentLocation else { return nil }
+        let listingLocation = CLLocation(latitude: listing.location.lat, longitude: listing.location.long)
+        return listingLocation.distance(from: currentLocation)
     }
     
 }
@@ -93,7 +100,7 @@ extension ListingResultsViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listing = self.listings[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listing") as! ListingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listing") as! ListingResultsTableViewCell
         cell.updateListing(listing)
         
         if let currentLocation = self.currentLocation {
@@ -106,7 +113,7 @@ extension ListingResultsViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: showDetailView, sender: tableView.cellForRow(at: indexPath))
+        performSegue(withIdentifier: showDetailViewSegue, sender: tableView.cellForRow(at: indexPath))
     }
     
 }

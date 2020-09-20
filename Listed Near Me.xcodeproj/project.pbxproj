@@ -11,9 +11,10 @@
 		B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */; };
 		B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */; };
 		B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */; };
+		B09B6CD92517AC840012542A /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD82517AC840012542A /* DetailTableViewController.swift */; };
+		B09B6CDB2517B09B0012542A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CDA2517B09B0012542A /* DetailViewController.swift */; };
 		B0AB17CD250FFCF300746C3C /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */; };
-		B0AB17CF251003B700746C3C /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17CE251003B700746C3C /* ListingDetailViewController.swift */; };
-		B0AB17D42512603900746C3C /* ListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17D32512603900746C3C /* ListingTableViewCell.swift */; };
+		B0AB17D42512603900746C3C /* ListingResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17D32512603900746C3C /* ListingResultsTableViewCell.swift */; };
 		B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */; };
 		B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */; };
 		B0FB41DB24EDAEAC00619CD4 /* ListingResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */; };
@@ -50,9 +51,10 @@
 		B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocationDistance+HumanReadable.swift"; path = "Listed Near Me/CLLocationDistance+HumanReadable.swift"; sourceTree = SOURCE_ROOT; };
 		B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+cornerRadius.swift"; sourceTree = "<group>"; };
 		B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+cornerRadius.swift"; sourceTree = "<group>"; };
+		B09B6CD82517AC840012542A /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		B09B6CDA2517B09B0012542A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
-		B0AB17CE251003B700746C3C /* ListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
-		B0AB17D32512603900746C3C /* ListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingTableViewCell.swift; sourceTree = "<group>"; };
+		B0AB17D32512603900746C3C /* ListingResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingResultsTableViewCell.swift; sourceTree = "<group>"; };
 		B0FB41D324EDAEAC00619CD4 /* Listed Near Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Listed Near Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,12 +113,13 @@
 		B0AB17D52513718300746C3C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */,
-				B0AB17CE251003B700746C3C /* ListingDetailViewController.swift */,
+				B09B6CD82517AC840012542A /* DetailTableViewController.swift */,
+				B09B6CDA2517B09B0012542A /* DetailViewController.swift */,
 				B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */,
-				B0AB17D32512603900746C3C /* ListingTableViewCell.swift */,
-				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
+				B0AB17D32512603900746C3C /* ListingResultsTableViewCell.swift */,
 				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
+				B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */,
+				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,9 +320,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */,
-				B0AB17CF251003B700746C3C /* ListingDetailViewController.swift in Sources */,
 				B0FB41DB24EDAEAC00619CD4 /* ListingResultsViewController.swift in Sources */,
-				B0AB17D42512603900746C3C /* ListingTableViewCell.swift in Sources */,
+				B0AB17D42512603900746C3C /* ListingResultsTableViewCell.swift in Sources */,
 				B0AB17CD250FFCF300746C3C /* SearchSuggestionsViewController.swift in Sources */,
 				B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */,
 				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
@@ -328,6 +330,8 @@
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
 				B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */,
 				B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */,
+				B09B6CD92517AC840012542A /* DetailTableViewController.swift in Sources */,
+				B09B6CDB2517B09B0012542A /* DetailViewController.swift in Sources */,
 				B0FB420724EDAFD400619CD4 /* ListingsAPI.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
 			);

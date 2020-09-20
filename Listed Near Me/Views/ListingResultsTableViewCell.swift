@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ListingTableViewCell: UITableViewCell {
+class ListingResultsTableViewCell: UITableViewCell {
     
     public var listing: Listing?
 
