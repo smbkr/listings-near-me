@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B03C32F22517D50800AB5B62 /* MKMapView+ZoomToFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C32F12517D50800AB5B62 /* MKMapView+ZoomToFit.swift */; };
 		B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */; };
 		B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */; };
 		B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B03C32F12517D50800AB5B62 /* MKMapView+ZoomToFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MKMapView+ZoomToFit.swift"; path = "Listed Near Me/MKMapView+ZoomToFit.swift"; sourceTree = SOURCE_ROOT; };
 		B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+RoundedToPlaces.swift"; sourceTree = "<group>"; };
 		B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocationDistance+HumanReadable.swift"; path = "Listed Near Me/CLLocationDistance+HumanReadable.swift"; sourceTree = SOURCE_ROOT; };
 		B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+cornerRadius.swift"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				B0FB420624EDAFD400619CD4 /* ListingsAPI.swift */,
 				B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */,
 				B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */,
+				B03C32F12517D50800AB5B62 /* MKMapView+ZoomToFit.swift */,
 				B0FB420A24EDB00700619CD4 /* Models */,
 				B0AB17D52513718300746C3C /* Views */,
 				B0AB17D225100A1A00746C3C /* Resources */,
@@ -333,6 +336,7 @@
 				B09B6CD92517AC840012542A /* DetailTableViewController.swift in Sources */,
 				B09B6CDB2517B09B0012542A /* DetailViewController.swift in Sources */,
 				B0FB420724EDAFD400619CD4 /* ListingsAPI.swift in Sources */,
+				B03C32F22517D50800AB5B62 /* MKMapView+ZoomToFit.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
