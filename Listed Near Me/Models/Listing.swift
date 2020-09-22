@@ -22,6 +22,6 @@ struct Listing: Codable {
 
         self.name = try container.decode(String.self, forKey: .name).localizedCapitalized
         self.grade = try container.decode(Grade?.self, forKey: .grade)
-        self.location = try container.decode(Location.self, forKey: .location)  // TODO: Should this be CLLocation?
+        self.location = try container.decode(Location.self, forKey: .location)
     }
 }

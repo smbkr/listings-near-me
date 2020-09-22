@@ -16,6 +16,7 @@
 		B09B6CDB2517B09B0012542A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CDA2517B09B0012542A /* DetailViewController.swift */; };
 		B0AB17CD250FFCF300746C3C /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */; };
 		B0AB17D42512603900746C3C /* ListingResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB17D32512603900746C3C /* ListingResultsTableViewCell.swift */; };
+		B0CC6EC1251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */; };
 		B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */; };
 		B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */; };
 		B0FB41DB24EDAEAC00619CD4 /* ListingResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */; };
@@ -57,6 +58,7 @@
 		B09B6CDA2517B09B0012542A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		B0AB17D32512603900746C3C /* ListingResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingResultsTableViewCell.swift; sourceTree = "<group>"; };
+		B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+initFromLocation.swift"; sourceTree = "<group>"; };
 		B0FB41D324EDAEAC00619CD4 /* Listed Near Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Listed Near Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +121,6 @@
 				B09B6CDA2517B09B0012542A /* DetailViewController.swift */,
 				B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */,
 				B0AB17D32512603900746C3C /* ListingResultsTableViewCell.swift */,
-				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
 				B0AB17CC250FFCF300746C3C /* SearchSuggestionsViewController.swift */,
 				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
 			);
@@ -149,6 +150,7 @@
 		B0FB41D524EDAEAC00619CD4 /* Listed Near Me */ = {
 			isa = PBXGroup;
 			children = (
+				B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */,
 				B0FB41E424EDAEAE00619CD4 /* Info.plist */,
 				B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */,
 				B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */,
@@ -156,6 +158,7 @@
 				B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */,
 				B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */,
 				B03C32F12517D50800AB5B62 /* MKMapView+ZoomToFit.swift */,
+				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
 				B0FB420A24EDB00700619CD4 /* Models */,
 				B0AB17D52513718300746C3C /* Views */,
 				B0AB17D225100A1A00746C3C /* Resources */,
@@ -333,6 +336,7 @@
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
 				B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */,
 				B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */,
+				B0CC6EC1251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift in Sources */,
 				B09B6CD92517AC840012542A /* DetailTableViewController.swift in Sources */,
 				B09B6CDB2517B09B0012542A /* DetailViewController.swift in Sources */,
 				B0FB420724EDAFD400619CD4 /* ListingsAPI.swift in Sources */,
@@ -511,6 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YR3CGZ88FH;
 				INFOPLIST_FILE = "Listed Near Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -528,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YR3CGZ88FH;
 				INFOPLIST_FILE = "Listed Near Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
