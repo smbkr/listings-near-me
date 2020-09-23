@@ -14,7 +14,6 @@
             <objects>
                 <navigationController id="A25-Zh-3vU" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="seM-OV-X0p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -104,14 +103,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fqa-yA-aLs" secondAttribute="trailing" id="GRQ-vg-6Pm"/>
-                            <constraint firstItem="Fqa-yA-aLs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HBZ-5J-htD"/>
-                            <constraint firstItem="Fqa-yA-aLs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uet-T1-i1J"/>
-                            <constraint firstItem="Fqa-yA-aLs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="h0H-1f-vnk"/>
+                            <constraint firstItem="Fqa-yA-aLs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="99c-4g-4i9"/>
+                            <constraint firstItem="Fqa-yA-aLs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Bs1-wt-GJn"/>
+                            <constraint firstItem="Fqa-yA-aLs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FoK-Fy-OVv"/>
+                            <constraint firstItem="Fqa-yA-aLs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uOK-dZ-jB6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" image="book" catalog="system" id="7l9-YI-OB3"/>
-                    <navigationItem key="navigationItem" title="Listings Near" id="8Lw-Tz-BAW"/>
+                    <navigationItem key="navigationItem" title="Listings Near" id="8Lw-Tz-BAW">
+                        <barButtonItem key="leftBarButtonItem" title="Current Location" image="location" catalog="system" id="RHC-Tq-s4B">
+                            <connections>
+                                <action selector="refreshLocation:" destination="BYZ-38-t0r" id="Eg4-Tm-fna"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" image="magnifyingglass" catalog="system" id="8ie-1n-kzG"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Fqa-yA-aLs" id="a1q-ON-bk0"/>
                         <segue destination="kQ5-Ji-aZt" kind="show" identifier="showDetailView" id="nf1-7H-bPA"/>
@@ -119,7 +124,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-686.95652173913049" y="-421.20535714285711"/>
+            <point key="canvasLocation" x="-687.20000000000005" y="-421.43928035982015"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mHz-GN-atX">
+            <objects>
+                <viewController id="1Et-fW-PPg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Mm-xJ-5zh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8LW-je-6Vl"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hMY-sG-CFV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="127" y="-1109"/>
         </scene>
         <!--Detail View-->
         <scene sceneID="4aO-jj-IG8">
@@ -389,7 +409,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="book" catalog="system" width="128" height="102"/>
         <image name="button:HXf-h9-UOq:image" width="128" height="113">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
@@ -15971,6 +15990,8 @@ AA4vkgAOL5QADi+WAA5BAgAOQQcADkEUAA5BFwAOQSQADkEpAA5BMQAOQTQADkE5AA5BQQAAAAAAAAQB
 AAAAAAAAAFUAAAAAAAAAAAAAAAAADkFEA
 </mutableData>
         </image>
+        <image name="location" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -15988,6 +16009,9 @@ AAAAAAAAAFUAAAAAAAAAAAAAAAAADkFEA
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

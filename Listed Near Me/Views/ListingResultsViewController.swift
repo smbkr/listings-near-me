@@ -23,32 +23,20 @@ class ListingResultsViewController: UIViewController {
     }
     private let api = ListingsAPI()
     private let locationManager = CLLocationManager()
+    
     private var currentLocation: CLLocation? {
         didSet {
-            // TODO Extract to a method
-            self.loadListingsForLocation(currentLocation!)
-            
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(currentLocation!) { (placemark, error) in
-                guard error == nil else {
-                    print(error!) // TODO
-                    return
-                }
-                let currentPlacemark = placemark?.first
-                if let locality = currentPlacemark?.subLocality {
-                    self.navigationItem.title = "Listings Near \(locality)"
-               }
-            }
+            currentLocationDidChange()
         }
     }
+    private var localityName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        refreshLocation(nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,20 +44,59 @@ class ListingResultsViewController: UIViewController {
         tableView.reloadData()
     }
     
-    @IBAction func refreshLocation(_ sender: Any) {
+    @IBAction private func refreshLocation(_ sender: Any?) {
+        listings = []
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
     
-    func loadListingsForLocation(_ location: CLLocation) {
+    private func getListingsForLocation(_ location: CLLocation) {
+        showActivityIndicator()
         self.api.getNear(location) { (result) in
             switch result {
             case .success(let listings):
                 self.listings = listings
+                DispatchQueue.main.async {
+                    self.hideActivityIndicator()
+                }
             case .failure(let error):
                 print(error) // TODO: Better error handling
             }
         }
+    }
+    
+    func showActivityIndicator() {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 14, height: 14)
+        activityIndicator.color = .black
+        activityIndicator.startAnimating()
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Loading"
+        
+        let size = CGFloat(18)
+        let fontDescriptor = UIFontDescriptor(fontAttributes: [
+            UIFontDescriptor.AttributeName.size: size,
+            UIFontDescriptor.AttributeName.family: UIFont.systemFont(ofSize: size).familyName,
+            UIFontDescriptor.AttributeName.traits: [
+                UIFontDescriptor.TraitKey.weight: UIFont.Weight.semibold
+            ]
+        ])
+        titleLabel.font = UIFont(descriptor: fontDescriptor, size: 0)
+        
+        let titleView = UIStackView(arrangedSubviews: [titleLabel, activityIndicator])
+        titleView.spacing = 8
+        
+        navigationItem.titleView = titleView
+    }
+    
+    func hideActivityIndicator() {
+        if let localityName = self.localityName {
+            self.navigationItem.title = "Listings Near \(localityName)"
+        } else {
+            self.navigationItem.title = "Nearby Listings"
+        }
+        self.navigationItem.titleView = nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,6 +115,22 @@ class ListingResultsViewController: UIViewController {
         guard let currentLocation = self.currentLocation else { return nil }
         let listingLocation = CLLocation(latitude: listing.location.lat, longitude: listing.location.long)
         return listingLocation.distance(from: currentLocation)
+    }
+    
+    private func currentLocationDidChange() {
+        self.getListingsForLocation(currentLocation!)
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(currentLocation!) { (placemark, error) in
+            guard error == nil else {
+                print(error!) // TODO
+                return
+            }
+            let currentPlacemark = placemark?.first
+            if let locality = currentPlacemark?.subLocality {
+                self.localityName = locality
+            }
+        }
     }
     
 }

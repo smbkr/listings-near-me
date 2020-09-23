@@ -104,6 +104,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B06505CE251A8F05000E141D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */,
+				B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */,
+				B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */,
+				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
+				B03C32F12517D50800AB5B62 /* MKMapView+ZoomToFit.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B0AB17D225100A1A00746C3C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,15 +162,11 @@
 		B0FB41D524EDAEAC00619CD4 /* Listed Near Me */ = {
 			isa = PBXGroup;
 			children = (
-				B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */,
 				B0FB41E424EDAEAE00619CD4 /* Info.plist */,
 				B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */,
 				B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */,
 				B0FB420624EDAFD400619CD4 /* ListingsAPI.swift */,
-				B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */,
-				B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */,
-				B03C32F12517D50800AB5B62 /* MKMapView+ZoomToFit.swift */,
-				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
+				B06505CE251A8F05000E141D /* Extensions */,
 				B0FB420A24EDB00700619CD4 /* Models */,
 				B0AB17D52513718300746C3C /* Views */,
 				B0AB17D225100A1A00746C3C /* Resources */,
@@ -257,7 +265,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Stuart Baker";
 				TargetAttributes = {
 					B0FB41D224EDAEAC00619CD4 = {
@@ -422,6 +430,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -482,6 +491,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
