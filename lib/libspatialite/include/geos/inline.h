@@ -1,25 +1,3 @@
-/**********************************************************************
- *
- * GEOS - Geometry Engine Open Source
- * http://geos.osgeo.org
- *
- * Copyright (C) 2005-2006 Refractions Research Inc.
- *
- * This is free software; you can redistribute and/or modify it under
- * the terms of the GNU Lesser General Public Licence as published
- * by the Free Software Foundation. 
- * See the COPYING file for more information.
- *
- **********************************************************************/
-
-#ifndef GEOS_INLINE_H
-#define GEOS_INLINE_H
-
-#ifdef GEOS_INLINE
-# define INLINE inline
-#else
-# define INLINE
-#endif
-
-
-#endif // ndef GEOS_INLINE_H
+version https://git-lfs.github.com/spec/v1
+oid sha256:61e16de50a41aa72e8eaa2b9e3312375d4ea771ee8af77573f39ee48cf385361
+size 641

@@ -1,14 +1,3 @@
-//
-//  LongLat.swift
-//  Listed Near Me
-//
-//  Created by Stuart Baker on 19/08/2020.
-//  Copyright © 2020 Stuart Baker. All rights reserved.
-//
-
-import Foundation
-
-struct Location: Codable {
-    var long: Double
-    var lat: Double
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3ba3364803b143b94e9f00c9eda56c6d314a9d92ac1046d564c7b224494ae4d3
+size 236

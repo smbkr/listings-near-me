@@ -1,34 +1,3 @@
-//
-//  DetailViewController.swift
-//  Listed Near Me
-//
-//  Created by Stuart Baker on 14/09/2020.
-//  Copyright © 2020 Stuart Baker. All rights reserved.
-//
-
-import UIKit
-import CoreLocation
-
-class DetailViewController: UIViewController {
-    
-    public var listing: Listing?
-    public var distance: CLLocationDistance?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let listing = listing {
-            self.navigationItem.title = listing.name
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "EmbedDetailTableView",
-            let detailTableViewController = segue.destination as? DetailTableViewController else {
-                return
-        }
-        detailTableViewController.listing = self.listing
-        detailTableViewController.distance = self.distance
-    }
-        
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:949e0f07c0dfe00db4dc28b6ad53d4f52922a93a9476814afc535729142cc59b
+size 904
