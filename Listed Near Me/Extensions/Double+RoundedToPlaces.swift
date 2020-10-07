@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:caff00f6ace481871347b6eb5286c81b387a335fb5d3c5a5cb60ad880f2f9a9a
-size 405
+//
+//  Double+RoundedToPlaces.swift
+//  Listed Near Me
+//
+//  Created by Stuart Baker on 17/09/2020.
+//  Copyright © 2020 Stuart Baker. All rights reserved.
+//
+
+import Foundation
+
+extension Double {
+    /// Rounds the double to n decimal places
+    func rounded(toPlaces places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}

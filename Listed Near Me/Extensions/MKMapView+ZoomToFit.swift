@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9774fa90c06f5b0f19bdcd763709003528e7fc81743c62ca33de96ce8fb8f1c0
-size 1164
+//
+//  MKMapView+ZoomToFit.swift
+//  Listed Near Me
+//
+//  Created by Stuart Baker on 20/09/2020.
+//  Copyright © 2020 Stuart Baker. All rights reserved.
+//
+
+import MapKit
+
+extension MKMapView
+{
+    func zoomToFit(centeredOn center: CLLocationCoordinate2D) {
+        var coordinates = [CLLocationCoordinate2D]()
+        var mapRects: [MKMapRect] = []
+        
+        if let userLocationCoordinates = self.userLocation.location?.coordinate {
+            coordinates.append(userLocationCoordinates)
+        }
+        coordinates.append(contentsOf: self.annotations.map { $0.coordinate })
+        let mapPoints = coordinates.map { MKMapPoint($0) }
+        mapRects.append(contentsOf: mapPoints.map {
+            MKMapRect(origin: $0, size: MKMapSize())
+        })
+        
+        let fittingRect = mapRects.reduce(MKMapRect.null) { (result, element) in
+            return result.union(element)
+        }
+        
+        let padding: CGFloat = 50
+        let edgePadding = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        self.setVisibleMapRect(self.mapRectThatFits(fittingRect, edgePadding: edgePadding), animated: true)
+    }
+}

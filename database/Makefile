@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:56a990693f0fa1bb192639e257dac5048c375c4e08e3fe11f17b277185970841
-size 502
+all: listed_buildings.db
+
+listed_buildings.db: container
+	touch listed_buildings.db
+	docker run \
+	--mount type=bind,source="$(PWD)/listed_buildings.db",target=/database/listed_buildings.db \
+	listed-buildings_db ruby make-db.rb
+
+.PHONY: container
+container: Listed\ Buildings.zip
+	docker build . -t listed-buildings_db
+
+Listed\ Buildings.zip:
+	echo "Please download listed buildings dataset from https://services.historicengland.org.uk/NMRDataDownload/OpenPages/Download.aspx"
+
+clean:
+	rm database.db

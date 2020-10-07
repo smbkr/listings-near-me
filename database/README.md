@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8f61c20216db50c8daf33bb4e63c41d130e6feea7126c4b2f212e03db8de4989
-size 573
+# Listed Buildings DB
+
+This directory contains the tooling to generate a SQLite + Spatialite database
+from Historic England datasets.
+
+## Requirements
+
+You need `Listed Buildings.zip`, downloadable from
+https://services.historicengland.org.uk/NMRDataDownload/OpenPages/Download.aspx
+as well as Docker to build the DB.
+
+## Getting up and running
+
+- Download the Listed Buildings data file described above and put it in this
+  directory as `Listed Buildings.zip`
+- Run `make` which will build & run the Docker container. This will create and
+  populate "listed_buildings.db"

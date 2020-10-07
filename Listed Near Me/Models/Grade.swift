@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:468461ef14bd6e32d57cc604e0d8d2f8c7f0e9b5061d883c5f641783887abb7f
-size 469
+//
+//  Grade.swift
+//  Listed Near Me
+//
+//  Created by Stuart Baker on 19/08/2020.
+//  Copyright © 2020 Stuart Baker. All rights reserved.
+//
+
+import Foundation
+
+enum Grade: String, Codable {
+    case I = "I"
+    case II = "II"
+    case IIs = "II*"
+}
+
+extension Grade: CustomStringConvertible {
+    var description: String {
+        switch self {
+            case .I: return "I"
+            case .II: return "II"
+            case .IIs: return "II*"
+        }
+    }
+}

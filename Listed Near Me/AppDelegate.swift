@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b56b4454a7576ff199732b9f0fd1fa14bff72b50a70846a3a428dda7bdee6558
-size 1569
+//
+//  AppDelegate.swift
+//  Listed Near Me
+//
+//  Created by Stuart Baker on 19/08/2020.
+//  Copyright © 2020 Stuart Baker. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        configureAppearance()
+        
+        return true
+    }
+
+    private func configureAppearance() -> Void {
+        UIButton.appearance().cornerRadius = 8;
+        MKMapView.appearance().cornerRadius = 8;
+    }
+
+    // MARK: UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+
+}
+

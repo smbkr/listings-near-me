@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ad2cc9a7949dce36cf76bf17690cf8d9f2d9870f31696eb17ded1d1af8dc3e97
-size 358
+//
+//  UIButton+cornerRadius.swift
+//  Listed Near Me
+//
+//  Created by Stuart Baker on 20/09/2020.
+//  Copyright © 2020 Stuart Baker. All rights reserved.
+//
+
+import Foundation
+import MapKit
+
+@objc extension MKMapView {
+    dynamic var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set { layer.cornerRadius = newValue }
+    }
+}

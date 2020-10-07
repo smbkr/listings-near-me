@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cd066a0429e804406ef457bdbd2a48d1b67733c393fcd42a05c5a32fb107f3d6
-size 210
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+gem "dbf"
+gem "sqlite3"
+gem "rubyzip"
+gem "lucky_case"
+gem "ruby-progressbar"
