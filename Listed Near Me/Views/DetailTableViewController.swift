@@ -39,6 +39,8 @@ class DetailTableViewController: UITableViewController {
             gradeLabel.text = "Ungraded"
         }
         
+        addedDateLabel.text = listing.listedDate
+        
         listingLocation = CLLocationCoordinate2D(from: listing.location)
         guard let listingLocation = listingLocation else { return }
         

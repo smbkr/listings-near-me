@@ -11,10 +11,10 @@ import Foundation
 struct Listing {
     var location: Location
     var grade: Grade?
-    var listedDate: Date?
+    var listedDate: String
     var name: String
     
-    init(name: String, grade: Grade?, location: Location, listedDate: Date?) {
+    init(name: String, grade: Grade?, location: Location, listedDate: String) {
         self.name = name.localizedCapitalized
         self.grade = grade
         self.location = location

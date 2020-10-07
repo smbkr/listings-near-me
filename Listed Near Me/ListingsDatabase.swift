@@ -119,11 +119,8 @@ extension ListingsDatabase {
             let long = sqlite3_column_double(stmnt, 4)
             
             let name = String(cString: nameColumn)
-            let gradeString = String(cString: gradeColumn)
-            let grade = Grade.init(rawValue: gradeString)
-            
-            let dateFormatter = ISO8601DateFormatter()
-            let listedDate = dateFormatter.date(from: String(cString: listedDateColumn))
+            let grade = Grade.init(rawValue: String(cString: gradeColumn))
+            let listedDate = String(cString: listedDateColumn)
             
             let location = Location(long: long, lat: lat)
             let listing = Listing(
