@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Grade: String, Codable {
+enum Grade: String {
     case I = "I"
     case II = "II"
     case IIs = "II*"

@@ -81,6 +81,7 @@ extension ListingsDatabase {
             SELECT
                 lb.name,
                 lb.grade,
+                lb.list_date,
                 Y(Transform(lb.geom, 4326)) "y",
                 X(Transform(lb.geom, 4326)) "x",
                 Distance(
@@ -109,18 +110,28 @@ extension ListingsDatabase {
         var listings = [Listing]()
         while sqlite3_step(stmnt) == SQLITE_ROW {
             guard let nameColumn = sqlite3_column_text(stmnt, 0),
-                  let gradeColumn = sqlite3_column_text(stmnt, 1) else {
+                  let gradeColumn = sqlite3_column_text(stmnt, 1),
+                  let listedDateColumn = sqlite3_column_text(stmnt, 2)
+            else {
                 throw DatabaseError.Step(message: errorMessage)
             }
-            let lat = sqlite3_column_double(stmnt, 2)
-            let long = sqlite3_column_double(stmnt, 3)
+            let lat = sqlite3_column_double(stmnt, 3)
+            let long = sqlite3_column_double(stmnt, 4)
             
             let name = String(cString: nameColumn)
             let gradeString = String(cString: gradeColumn)
             let grade = Grade.init(rawValue: gradeString)
             
+            let dateFormatter = ISO8601DateFormatter()
+            let listedDate = dateFormatter.date(from: String(cString: listedDateColumn))
+            
             let location = Location(long: long, lat: lat)
-            let listing = Listing(name: name, grade: grade, location: location)
+            let listing = Listing(
+                name: name,
+                grade: grade,
+                location: location,
+                listedDate: listedDate
+            )
             
             listings.append(listing)
         }

@@ -8,29 +8,16 @@
 
 import Foundation
 
-struct Listing: Codable {
+struct Listing {
     var location: Location
     var grade: Grade?
-    private var _name: String
-    var name: String {
-        return _name.localizedCapitalized
-    }
+    var listedDate: Date?
+    var name: String
     
-    private enum CodingKeys: String, CodingKey {
-        case location, grade, _name
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        self._name = try container.decode(String.self, forKey: ._name).localizedCapitalized
-        self.grade = try container.decode(Grade?.self, forKey: .grade)
-        self.location = try container.decode(Location.self, forKey: .location)
-    }
-    
-    init(name: String, grade: Grade?, location: Location) {
-        self._name = name
+    init(name: String, grade: Grade?, location: Location, listedDate: Date?) {
+        self.name = name.localizedCapitalized
         self.grade = grade
         self.location = location
+        self.listedDate = listedDate
     }
 }
