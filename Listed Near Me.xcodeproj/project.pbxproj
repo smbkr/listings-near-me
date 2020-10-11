@@ -13,6 +13,7 @@
 		B04235E7BF0B0A19EF81BAEA /* Pods_Listed_Near_MeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC546677E2007AEF31F20C6 /* Pods_Listed_Near_MeTests.framework */; };
 		B056BF8A252BDB2A0098FBB0 /* listed_buildings.db in Resources */ = {isa = PBXBuildFile; fileRef = B056BF83252B69B60098FBB0 /* listed_buildings.db */; };
 		B05E2C112533238D002625B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E2C102533238D002625B9 /* ViewController.swift */; };
+		B05E2C4625336A8F002625B9 /* FloatingPanelBottomTipLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */; };
 		B06A615E252092B8006229A7 /* libproj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A5F95252092B7006229A7 /* libproj.a */; };
 		B06A615F252092B8006229A7 /* libgeos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A5F96252092B7006229A7 /* libgeos.a */; };
 		B06A6160252092B8006229A7 /* GeometryGraph.inl in Resources */ = {isa = PBXBuildFile; fileRef = B06A5FA2252092B7006229A7 /* GeometryGraph.inl */; };
@@ -84,6 +85,7 @@
 		B03C32F12517D50800AB5B62 /* MKMapView+ZoomToFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MKMapView+ZoomToFit.swift"; path = "Listed Near Me/Extensions/MKMapView+ZoomToFit.swift"; sourceTree = SOURCE_ROOT; };
 		B056BF83252B69B60098FBB0 /* listed_buildings.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = listed_buildings.db; sourceTree = "<group>"; };
 		B05E2C102533238D002625B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelBottomTipLayout.swift; sourceTree = "<group>"; };
 		B06A5F95252092B7006229A7 /* libproj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libproj.a; sourceTree = "<group>"; };
 		B06A5F96252092B7006229A7 /* libgeos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgeos.a; sourceTree = "<group>"; };
 		B06A5F98252092B7006229A7 /* org_proj4_PJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_proj4_PJ.h; sourceTree = "<group>"; };
@@ -1380,6 +1382,7 @@
 				B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */,
 				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
 				B05E2C102533238D002625B9 /* ViewController.swift */,
+				B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1734,6 +1737,7 @@
 				B0FB420724EDAFD400619CD4 /* ListingsDatabase.swift in Sources */,
 				B03C32F22517D50800AB5B62 /* MKMapView+ZoomToFit.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
+				B05E2C4625336A8F002625B9 /* FloatingPanelBottomTipLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

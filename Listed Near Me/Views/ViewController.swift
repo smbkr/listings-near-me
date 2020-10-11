@@ -13,20 +13,28 @@ import FloatingPanel
 class ViewController: UIViewController {
     
     /// Sub-views
-    private var fpc = FloatingPanelController()
-    private var listingResultsVC = ListingResultsViewController()
-    private var map = MKMapView()
+    private var floatingPanel = FloatingPanelController()
+    private var listingResultsView = ListingResultsViewController()
+    private var mapView = MKMapView()
     
     /// Internal state
     private var statusBarWasBlurred = false
+    private var currentLocation: CLLocation? {
+        didSet {
+            refreshListings()
+        }
+    }
     
     /// Models
-    private var currentLocation: CLLocation?
-    private var listings = [Listing]()
+    private let listingsDB = try! ListingsDatabase.open()
+    private var listings = [Listing]() {
+        didSet {
+            listingResultsView.listings = listings
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupMapView()
         setupFloatingPanel()
     }
@@ -36,41 +44,39 @@ class ViewController: UIViewController {
     }
     
     private func setupFloatingPanel() {
-        fpc.set(contentViewController: listingResultsVC)
-        fpc.track(scrollView: listingResultsVC.tableView)
-        fpc.layout = FloatingPanelBottomTipLayout()
+        floatingPanel.set(contentViewController: listingResultsView)
+        floatingPanel.track(scrollView: listingResultsView.tableView)
+        floatingPanel.layout = FloatingPanelBottomTipLayout()
         
-        fpc.addPanel(toParent: self)
+        floatingPanel.addPanel(toParent: self)
         
         let appearance = SurfaceAppearance()
         appearance.cornerRadius = 8
-        fpc.surfaceView.appearance = appearance
-        fpc.surfaceView.contentPadding.top = 20
+        floatingPanel.surfaceView.appearance = appearance
+        floatingPanel.surfaceView.contentPadding.top = 20
     }
     
     private func setupMapView() {
-        map.delegate = self
-        
-        map.isZoomEnabled = true
-        map.isScrollEnabled = true
-        map.showsUserLocation = true
-        map.showsScale = true
-        map.showsCompass = true
-        map.showsBuildings = true
-        map.showsTraffic = false
-        
-        map.setCameraZoomRange(
+        mapView.delegate = self
+        mapView.isZoomEnabled = true
+        mapView.isScrollEnabled = true
+        mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.showsCompass = true
+        mapView.showsBuildings = true
+        mapView.showsTraffic = false
+        mapView.setCameraZoomRange(
             MKMapView.CameraZoomRange(minCenterCoordinateDistance: CLLocationDistance(750)),
             animated: true
         )
         
-        view.addSubview(map)
+        view.addSubview(mapView)
         
-        map.translatesAutoresizingMaskIntoConstraints = false
-        map.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        map.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        map.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        map.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
     private func blurStatusBar() -> Void {
@@ -88,9 +94,8 @@ class ViewController: UIViewController {
 extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         currentLocation = userLocation.location
-        
         if mapViewRegionDidChangeFromUserInteraction() == false {
-            map.zoomToFit(centeredOn: map.userLocation.coordinate)
+            mapView.zoomToFit(centeredOn: mapView.userLocation.coordinate)
         }
     }
     
@@ -100,7 +105,7 @@ extension ViewController: MKMapViewDelegate {
     }
     
     private func mapViewRegionDidChangeFromUserInteraction() -> Bool {
-        let view = map.subviews[0]
+        let view = mapView.subviews[0]
         //  Look through gesture recognizers to determine whether this region change is from user interaction
         if let gestureRecognizers = view.gestureRecognizers {
             for recognizer in gestureRecognizers {
@@ -113,9 +118,15 @@ extension ViewController: MKMapViewDelegate {
     }
 }
 
-
-fileprivate class FloatingPanelBottomTipLayout: FloatingPanelBottomLayout {
-    override final var initialState: FloatingPanelState {
-        return .tip
+extension ViewController {
+    // TODO: This should happen on another thread
+    private func refreshListings() {
+        guard let location = currentLocation else { return }
+        do {
+            listings =  try listingsDB.getNear(location)
+        } catch let error {
+            // FIXME
+            print(error)
+        }
     }
 }
