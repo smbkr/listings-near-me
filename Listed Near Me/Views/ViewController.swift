@@ -27,12 +27,13 @@ class ViewController: UIViewController {
     private func setupFloatingPanel() {
         fpc.set(contentViewController: listingResultsVC)
         fpc.track(scrollView: listingResultsVC.tableView)
+        fpc.layout = FloatingPanelBottomTipLayout()
+        
         fpc.addPanel(toParent: self)
         
         let appearance = SurfaceAppearance()
         appearance.cornerRadius = 8
         fpc.surfaceView.appearance = appearance
-        
         fpc.surfaceView.contentPadding.top = 20
     }
     
@@ -46,6 +47,11 @@ class ViewController: UIViewController {
         map.showsCompass = true
         map.showsBuildings = true
         map.showsTraffic = false
+        
+        map.setCameraZoomRange(
+            MKMapView.CameraZoomRange(minCenterCoordinateDistance: CLLocationDistance(750)),
+            animated: true
+        )
         
         view.addSubview(map)
         
@@ -69,10 +75,34 @@ class ViewController: UIViewController {
 extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         currentLocation = userLocation.location
+        
+        if mapViewRegionDidChangeFromUserInteraction() == false {
+            map.zoomToFit(centeredOn: map.userLocation.coordinate)
+        }
     }
     
     func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error) {
         // FIXME
         print("Failed to get user location: \(error)")
+    }
+    
+    private func mapViewRegionDidChangeFromUserInteraction() -> Bool {
+        let view = map.subviews[0]
+        //  Look through gesture recognizers to determine whether this region change is from user interaction
+        if let gestureRecognizers = view.gestureRecognizers {
+            for recognizer in gestureRecognizers {
+                if( recognizer.state == UIGestureRecognizer.State.began || recognizer.state == UIGestureRecognizer.State.ended ) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+}
+
+
+fileprivate class FloatingPanelBottomTipLayout: FloatingPanelBottomLayout {
+    override final var initialState: FloatingPanelState {
+        return .tip
     }
 }
