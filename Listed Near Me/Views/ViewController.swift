@@ -12,16 +12,27 @@ import FloatingPanel
 
 class ViewController: UIViewController {
     
+    /// Sub-views
     private var fpc = FloatingPanelController()
     private var listingResultsVC = ListingResultsViewController()
     private var map = MKMapView()
+    
+    /// Internal state
+    private var statusBarWasBlurred = false
+    
+    /// Models
     private var currentLocation: CLLocation?
+    private var listings = [Listing]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupMapView()
         setupFloatingPanel()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        blurStatusBar()
     }
     
     private func setupFloatingPanel() {
@@ -60,15 +71,17 @@ class ViewController: UIViewController {
         map.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         map.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         map.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        blurStatusBar()
     }
     
-    private func blurStatusBar() {
-        let statusBarFrame = UIApplication.shared.statusBarFrame
-        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-        blurEffectView.frame = statusBarFrame
-        view.addSubview(blurEffectView)
+    private func blurStatusBar() -> Void {
+        if statusBarWasBlurred { return }
+        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        if let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame {
+            let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+            blurEffectView.frame = statusBarFrame
+            view.addSubview(blurEffectView)
+            statusBarWasBlurred = true
+        }
     }
 }
 
