@@ -65,17 +65,47 @@ class ListingsDatabase {
         }
     }
     
-    private func prepareStatement(sql: String) throws -> OpaquePointer? {
+    private func prepareStatement(sql: String) throws -> OpaquePointer {
         var statement: OpaquePointer?
         guard sqlite3_prepare_v2(dbPointer, sql, -1, &statement, nil) == SQLITE_OK else {
             throw DatabaseError.Prepare(message: self.errorMessage)
         }
-        return statement
+        return statement!
     }
     
 }
  
 extension ListingsDatabase {
+    private func loadListings(with statement: OpaquePointer) throws -> [Listing] {
+        var listings = [Listing]()
+        while sqlite3_step(statement) == SQLITE_ROW {
+            guard let nameColumn = sqlite3_column_text(statement, 0),
+                  let gradeColumn = sqlite3_column_text(statement, 1),
+                  let listedDateColumn = sqlite3_column_text(statement, 2)
+            else {
+                throw DatabaseError.Step(message: errorMessage)
+            }
+            let lat = sqlite3_column_double(statement, 3)
+            let long = sqlite3_column_double(statement, 4)
+            
+            let name = String(cString: nameColumn)
+            let grade = Grade.init(rawValue: String(cString: gradeColumn))
+            let listedDate = String(cString: listedDateColumn)
+            
+            let location = Location(long: long, lat: lat)
+            let listing = Listing(
+                name: name,
+                grade: grade,
+                location: location,
+                listedDate: listedDate
+            )
+            
+            listings.append(listing)
+        }
+        
+        return listings
+    }
+    
     func getNear(_ location: CLLocation) throws -> [Listing] {
         let query = """
             SELECT
@@ -107,32 +137,33 @@ extension ListingsDatabase {
             throw DatabaseError.Bind(message: errorMessage)
         }
         
-        var listings = [Listing]()
-        while sqlite3_step(stmnt) == SQLITE_ROW {
-            guard let nameColumn = sqlite3_column_text(stmnt, 0),
-                  let gradeColumn = sqlite3_column_text(stmnt, 1),
-                  let listedDateColumn = sqlite3_column_text(stmnt, 2)
-            else {
-                throw DatabaseError.Step(message: errorMessage)
-            }
-            let lat = sqlite3_column_double(stmnt, 3)
-            let long = sqlite3_column_double(stmnt, 4)
-            
-            let name = String(cString: nameColumn)
-            let grade = Grade.init(rawValue: String(cString: gradeColumn))
-            let listedDate = String(cString: listedDateColumn)
-            
-            let location = Location(long: long, lat: lat)
-            let listing = Listing(
-                name: name,
-                grade: grade,
-                location: location,
-                listedDate: listedDate
-            )
-            
-            listings.append(listing)
+        return try loadListings(with: stmnt)
+    }
+    
+    func withinBounds(_ rectangle: MKMapRect) throws -> [Listing] {
+        let query = """
+            SELECT
+                lb.name,
+                lb.grade,
+                lb.list_date,
+                Y(Transform(lb.geom, 4326)) "y",
+                X(Transform(lb.geom, 4326)) "x"
+            FROM listed_buildings lb
+            WHERE Within(lb.geom, PolygonFromText(?, 4326)) IS TRUE
+            LIMIT 100
+        """
+        let stmnt = try prepareStatement(sql: query)
+        defer {
+            sqlite3_finalize(stmnt)
+        }
+
+        let rectangleWKT = "\(rectangle.minX), \(rectangle.minY), \(rectangle.maxX), \(rectangle.maxY)"
+        guard
+            sqlite3_bind_text(stmnt, 1, rectangleWKT, -1, nil) == SQLITE_OK
+        else {
+            throw DatabaseError.Bind(message: errorMessage)
         }
         
-        return listings
+        return try loadListings(with: stmnt)
     }
 }

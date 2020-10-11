@@ -14,6 +14,7 @@
 		B056BF8A252BDB2A0098FBB0 /* listed_buildings.db in Resources */ = {isa = PBXBuildFile; fileRef = B056BF83252B69B60098FBB0 /* listed_buildings.db */; };
 		B05E2C112533238D002625B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E2C102533238D002625B9 /* ViewController.swift */; };
 		B05E2C4625336A8F002625B9 /* FloatingPanelBottomTipLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */; };
+		B05E2C4E25338B9F002625B9 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E2C4D25338B9F002625B9 /* Debounce.swift */; };
 		B06A615E252092B8006229A7 /* libproj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A5F95252092B7006229A7 /* libproj.a */; };
 		B06A615F252092B8006229A7 /* libgeos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A5F96252092B7006229A7 /* libgeos.a */; };
 		B06A6160252092B8006229A7 /* GeometryGraph.inl in Resources */ = {isa = PBXBuildFile; fileRef = B06A5FA2252092B7006229A7 /* GeometryGraph.inl */; };
@@ -48,7 +49,6 @@
 		B0CC6EC1251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */; };
 		B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */; };
 		B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */; };
-		B0FB41DB24EDAEAC00619CD4 /* ListingResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */; };
 		B0FB41E024EDAEAE00619CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FB41DF24EDAEAE00619CD4 /* Assets.xcassets */; };
 		B0FB41E324EDAEAE00619CD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FB41E124EDAEAE00619CD4 /* LaunchScreen.storyboard */; };
 		B0FB41EE24EDAEAF00619CD4 /* Listed_Near_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41ED24EDAEAF00619CD4 /* Listed_Near_MeTests.swift */; };
@@ -86,6 +86,7 @@
 		B056BF83252B69B60098FBB0 /* listed_buildings.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = listed_buildings.db; sourceTree = "<group>"; };
 		B05E2C102533238D002625B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelBottomTipLayout.swift; sourceTree = "<group>"; };
+		B05E2C4D25338B9F002625B9 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		B06A5F95252092B7006229A7 /* libproj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libproj.a; sourceTree = "<group>"; };
 		B06A5F96252092B7006229A7 /* libgeos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgeos.a; sourceTree = "<group>"; };
 		B06A5F98252092B7006229A7 /* org_proj4_PJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_proj4_PJ.h; sourceTree = "<group>"; };
@@ -515,7 +516,6 @@
 		B0FB41D324EDAEAC00619CD4 /* Listed Near Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Listed Near Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingResultsViewController.swift; sourceTree = "<group>"; };
 		B0FB41DF24EDAEAE00619CD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0FB41E224EDAEAE00619CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0FB41E424EDAEAE00619CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1379,7 +1379,6 @@
 		B0AB17D52513718300746C3C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B0FB41DA24EDAEAC00619CD4 /* ListingResultsViewController.swift */,
 				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
 				B05E2C102533238D002625B9 /* ViewController.swift */,
 				B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */,
@@ -1418,6 +1417,7 @@
 				B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */,
 				B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */,
 				B0FB420624EDAFD400619CD4 /* ListingsDatabase.swift */,
+				B05E2C4D25338B9F002625B9 /* Debounce.swift */,
 				B06505CE251A8F05000E141D /* Extensions */,
 				B0FB420A24EDB00700619CD4 /* Models */,
 				B0AB17D52513718300746C3C /* Views */,
@@ -1724,7 +1724,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */,
-				B0FB41DB24EDAEAC00619CD4 /* ListingResultsViewController.swift in Sources */,
 				B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */,
 				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
 				B05E2C112533238D002625B9 /* ViewController.swift in Sources */,
@@ -1737,6 +1736,7 @@
 				B0FB420724EDAFD400619CD4 /* ListingsDatabase.swift in Sources */,
 				B03C32F22517D50800AB5B62 /* MKMapView+ZoomToFit.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
+				B05E2C4E25338B9F002625B9 /* Debounce.swift in Sources */,
 				B05E2C4625336A8F002625B9 /* FloatingPanelBottomTipLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

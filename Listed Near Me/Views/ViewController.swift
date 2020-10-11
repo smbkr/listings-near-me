@@ -14,28 +14,29 @@ class ViewController: UIViewController {
     
     /// Sub-views
     private var floatingPanel = FloatingPanelController()
-    private var listingResultsView = ListingResultsViewController()
+    private var listingsTableView = UITableView()
     private var mapView = MKMapView()
     
     /// Internal state
     private var statusBarWasBlurred = false
-    private var currentLocation: CLLocation? {
-        didSet {
-            refreshListings()
-        }
-    }
+    private var locationManager = CLLocationManager()
+    private var currentLocation: CLLocation?
+    private var pendingListingsRequest: DispatchWorkItem?
     
     /// Models
     private let listingsDB = try! ListingsDatabase.open()
     private var listings = [Listing]() {
         didSet {
-            listingResultsView.listings = listings
+            DispatchQueue.main.async {
+                self.listingsTableView.reloadData()
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView()
+        setupTableView()
         setupFloatingPanel()
     }
     
@@ -43,20 +44,37 @@ class ViewController: UIViewController {
         blurStatusBar()
     }
     
+    private func setupTableView() {
+        listingsTableView.dataSource = self
+        listingsTableView.delegate = self
+    }
+    
     private func setupFloatingPanel() {
-        floatingPanel.set(contentViewController: listingResultsView)
-        floatingPanel.track(scrollView: listingResultsView.tableView)
-        floatingPanel.layout = FloatingPanelBottomTipLayout()
+        let tableViewController = UIViewController()
+        tableViewController.view.addSubview(listingsTableView)
+        listingsTableView.translatesAutoresizingMaskIntoConstraints = false
+        listingsTableView.topAnchor.constraint(equalTo: tableViewController.view.topAnchor).isActive = true
+        listingsTableView.leftAnchor.constraint(equalTo: tableViewController.view.leftAnchor).isActive = true
+        listingsTableView.bottomAnchor.constraint(equalTo: tableViewController.view.bottomAnchor).isActive = true
+        listingsTableView.rightAnchor.constraint(equalTo: tableViewController.view.rightAnchor).isActive = true
         
+        floatingPanel.set(contentViewController: tableViewController)
+        floatingPanel.track(scrollView: listingsTableView)
+        floatingPanel.layout = FloatingPanelBottomTipLayout()
         floatingPanel.addPanel(toParent: self)
         
         let appearance = SurfaceAppearance()
         appearance.cornerRadius = 8
         floatingPanel.surfaceView.appearance = appearance
-        floatingPanel.surfaceView.contentPadding.top = 20
+        floatingPanel.surfaceView.contentPadding.top = 30
     }
     
     private func setupMapView() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
         mapView.delegate = self
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
@@ -71,7 +89,7 @@ class ViewController: UIViewController {
         )
         
         view.addSubview(mapView)
-        
+
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -91,9 +109,34 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: Listings
+
+extension ViewController {
+    private func refreshListings() {
+        Debouncer.shared.perform(afterDelayMs: 500) { [self] in
+            do {
+                let listings = try self.listingsDB.withinBounds(self.mapView.visibleMapRect)
+                self.listings = listings.sorted { (a, b) -> Bool in
+                    guard let currentLocation = self.currentLocation else { return true }
+                    let aLocation = CLLocation(latitude: a.location.lat, longitude: a.location.long)
+                    let bLocation = CLLocation(latitude: b.location.lat, longitude: b.location.long)
+                    let aDistance = currentLocation.distance(from: aLocation)
+                    let bDistance = currentLocation.distance(from: bLocation)
+                    
+                    return aDistance > bDistance
+                }
+            } catch let error {
+                // FIXME
+                print(error)
+            }
+        }
+    }
+}
+
+// MARK: Map
+
 extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        currentLocation = userLocation.location
         if mapViewRegionDidChangeFromUserInteraction() == false {
             mapView.zoomToFit(centeredOn: mapView.userLocation.coordinate)
         }
@@ -104,12 +147,16 @@ extension ViewController: MKMapViewDelegate {
         print("Failed to get user location: \(error)")
     }
     
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+        refreshListings()
+    }
+    
     private func mapViewRegionDidChangeFromUserInteraction() -> Bool {
         let view = mapView.subviews[0]
         //  Look through gesture recognizers to determine whether this region change is from user interaction
         if let gestureRecognizers = view.gestureRecognizers {
             for recognizer in gestureRecognizers {
-                if( recognizer.state == UIGestureRecognizer.State.began || recognizer.state == UIGestureRecognizer.State.ended ) {
+                if (recognizer.state == UIGestureRecognizer.State.began || recognizer.state == UIGestureRecognizer.State.ended) {
                     return true
                 }
             }
@@ -118,15 +165,33 @@ extension ViewController: MKMapViewDelegate {
     }
 }
 
-extension ViewController {
-    // TODO: This should happen on another thread
-    private func refreshListings() {
-        guard let location = currentLocation else { return }
-        do {
-            listings =  try listingsDB.getNear(location)
-        } catch let error {
-            // FIXME
-            print(error)
-        }
+// MARK: Location Manager
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = locations.first
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // FIXME
+        print(error)
+    }
+}
+
+// MARK: Table View
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "listing")
+        let listing = listings[indexPath.row]
+        cell.textLabel?.text = listing.name
+        let listingLocation = CLLocation(latitude: listing.location.lat, longitude: listing.location.long)
+        let distance = currentLocation?.distance(from: listingLocation)
+        cell.detailTextLabel?.text = distance?.humanReadableString()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listings.count
     }
 }
