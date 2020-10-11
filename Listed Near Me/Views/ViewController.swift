@@ -12,12 +12,18 @@ import FloatingPanel
 
 class ViewController: UIViewController {
     
-    var fpc = FloatingPanelController()
-    var listingResultsVC = ListingResultsViewController()
-    var map = MKMapView()
+    private var fpc = FloatingPanelController()
+    private var listingResultsVC = ListingResultsViewController()
+    private var map = MKMapView()
+    private var currentLocation: CLLocation?
+    private let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
         
         setupMapView()
         setupFloatingPanel()
@@ -55,11 +61,38 @@ class ViewController: UIViewController {
         blurStatusBar()
     }
     
-    func blurStatusBar() {
+    private func blurStatusBar() {
         let statusBarFrame = UIApplication.shared.statusBarFrame
         let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         blurEffectView.frame = statusBarFrame
         view.addSubview(blurEffectView)
     }
     
+    private func refreshLocation(_ sender: Any?) {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+}
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {
+            // FIXME
+            print("Something is wrong with the location")
+            return
+        }
+        
+        self.currentLocation = location
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // FIXME
+        print("Failed to get user location: \(error)")
+    }
 }
