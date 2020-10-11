@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.backgroundColor = .white
         setupMapView()
         setupFloatingPanel()
     }
@@ -52,6 +51,15 @@ class ViewController: UIViewController {
         map.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         map.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         map.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        blurStatusBar()
+    }
+    
+    func blurStatusBar() {
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+        blurEffectView.frame = statusBarFrame
+        view.addSubview(blurEffectView)
     }
     
 }
