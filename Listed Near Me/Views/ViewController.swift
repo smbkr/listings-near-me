@@ -16,14 +16,9 @@ class ViewController: UIViewController {
     private var listingResultsVC = ListingResultsViewController()
     private var map = MKMapView()
     private var currentLocation: CLLocation?
-    private let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
         
         setupMapView()
         setupFloatingPanel()
@@ -42,6 +37,8 @@ class ViewController: UIViewController {
     }
     
     private func setupMapView() {
+        map.delegate = self
+        
         map.isZoomEnabled = true
         map.isScrollEnabled = true
         map.showsUserLocation = true
@@ -67,31 +64,14 @@ class ViewController: UIViewController {
         blurEffectView.frame = statusBarFrame
         view.addSubview(blurEffectView)
     }
-    
-    private func refreshLocation(_ sender: Any?) {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-    }
 }
 
-extension ViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
+extension ViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        currentLocation = userLocation.location
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else {
-            // FIXME
-            print("Something is wrong with the location")
-            return
-        }
-        
-        self.currentLocation = location
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error) {
         // FIXME
         print("Failed to get user location: \(error)")
     }
