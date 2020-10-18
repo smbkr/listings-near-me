@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.listingsTableView.reloadData()
+                self.reloadMapAnnotations()
             }
         }
     }
@@ -129,6 +130,21 @@ extension ViewController {
                 // FIXME
                 print(error)
             }
+        }
+    }
+    
+    private func reloadMapAnnotations() {
+        mapView.removeAnnotations(mapView.annotations)
+        for listing in listings {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(
+                latitude: listing.location.lat, longitude: listing.location.long
+            )
+            annotation.title = listing.name
+            if let grade = listing.grade {
+                annotation.subtitle = "Grade \(grade)"
+            }
+            mapView.addAnnotation(annotation)
         }
     }
 }
