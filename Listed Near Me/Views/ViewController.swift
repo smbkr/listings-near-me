@@ -123,7 +123,7 @@ extension ViewController {
                     let aDistance = currentLocation.distance(from: aLocation)
                     let bDistance = currentLocation.distance(from: bLocation)
                     
-                    return aDistance > bDistance
+                    return aDistance < bDistance
                 }
             } catch let error {
                 // FIXME
