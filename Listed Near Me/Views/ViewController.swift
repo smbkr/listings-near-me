@@ -20,7 +20,14 @@ class ViewController: UIViewController {
     /// Internal state
     private var statusBarWasBlurred = false
     private var locationManager = CLLocationManager()
-    private var currentLocation: CLLocation?
+    private var currentLocation: CLLocation? {
+        didSet {
+            if mapViewRegionDidChangeFromUserInteraction() == false {
+                guard let currentLocation = currentLocation else { return }
+                mapView.centerOnLocation(currentLocation)
+            }
+        }
+    }
     private var pendingListingsRequest: DispatchWorkItem?
     
     /// Models
@@ -152,17 +159,6 @@ extension ViewController {
 // MARK: Map
 
 extension ViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        if mapViewRegionDidChangeFromUserInteraction() == false {
-            mapView.zoomToFit(centeredOn: mapView.userLocation.coordinate)
-        }
-    }
-    
-    func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error) {
-        // FIXME
-        print("Failed to get user location: \(error)")
-    }
-    
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         refreshListings()
     }

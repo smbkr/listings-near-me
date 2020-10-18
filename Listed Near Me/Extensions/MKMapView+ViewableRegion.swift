@@ -31,4 +31,15 @@ extension MKMapView
         let edgePadding = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         self.setVisibleMapRect(self.mapRectThatFits(fittingRect, edgePadding: edgePadding), animated: true)
     }
+    
+    func centerOnLocation(
+      _ location: CLLocation,
+      radiusMeters: CLLocationDistance = 1000
+    ) {
+      let coordinateRegion = MKCoordinateRegion(
+        center: location.coordinate,
+        latitudinalMeters: radiusMeters,
+        longitudinalMeters: radiusMeters)
+      setRegion(coordinateRegion, animated: true)
+    }
 }
