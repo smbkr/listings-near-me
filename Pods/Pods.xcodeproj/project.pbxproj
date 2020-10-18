@@ -84,18 +84,18 @@
 		5D38B556141EFA2D4809DA6A7429E3C3 /* Pods-Listed Near MeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Listed Near MeTests.release.xcconfig"; sourceTree = "<group>"; };
 		619EF33782E11CFFE2A3474155D91F16 /* State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = State.swift; path = Sources/State.swift; sourceTree = "<group>"; };
 		62BA0C91468A56C844FEC511B937168F /* Pods-Listed Near MeTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Listed Near MeTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		67340E40E7441FA051A2B0BDCD5799B6 /* Pods_Listed_Near_MeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Listed_Near_MeTests.framework; path = "Pods-Listed Near MeTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67340E40E7441FA051A2B0BDCD5799B6 /* Pods_Listed_Near_MeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Listed_Near_MeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D408974447AC9E91A8C2E9A7CD5B8F2 /* Pods-Listed Near Me-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Listed Near Me-dummy.m"; sourceTree = "<group>"; };
-		6FAAB7D3DE9B2564509ABD18687E938E /* FloatingPanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FloatingPanel.framework; path = FloatingPanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FAAB7D3DE9B2564509ABD18687E938E /* FloatingPanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FloatingPanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70EE12EE4EC7477DF8CF174AFC1E02A9 /* Pods-Listed Near Me-Listed Near MeUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Listed Near Me-Listed Near MeUITests-Info.plist"; sourceTree = "<group>"; };
 		717E61FB376412DD04385ACF5C3D6D43 /* FloatingPanel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FloatingPanel.modulemap; sourceTree = "<group>"; };
-		77A1F7DE22B4B477DC3F43D7127F29EE /* Pods_Listed_Near_Me_Listed_Near_MeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Listed_Near_Me_Listed_Near_MeUITests.framework; path = "Pods-Listed Near Me-Listed Near MeUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77A1F7DE22B4B477DC3F43D7127F29EE /* Pods_Listed_Near_Me_Listed_Near_MeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Listed_Near_Me_Listed_Near_MeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C60442859EA5E48A78D475D12EFE765 /* Pods-Listed Near Me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Listed Near Me.debug.xcconfig"; sourceTree = "<group>"; };
 		7EED2A815A1E3F43460774741CA8D18E /* LayoutReferences.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutReferences.swift; path = Sources/LayoutReferences.swift; sourceTree = "<group>"; };
 		7F1C91A11DE59511EFA3D96537E8A262 /* Pods-Listed Near MeTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Listed Near MeTests-Info.plist"; sourceTree = "<group>"; };
 		94111F11E4879FE07AAADA572CA79DD8 /* Pods-Listed Near Me-Listed Near MeUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Listed Near Me-Listed Near MeUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9B8C8D587FABFF6896141C8AE05DD9A3 /* Pods-Listed Near Me-Listed Near MeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Listed Near Me-Listed Near MeUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EA16F01B4F9557307964314EC83505D /* Pods-Listed Near MeTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Listed Near MeTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9ED3E31C2CCAF236B6542560F6C24FF3 /* Pods-Listed Near Me-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Listed Near Me-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A924B144E4735870BB23C5186903F7FB /* Pods-Listed Near Me-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Listed Near Me-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		BDED7958EAE0E169A7752284210919FB /* FloatingPanel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FloatingPanel.release.xcconfig; sourceTree = "<group>"; };
 		BE50081AC8039766768E4745C805EB19 /* Pods-Listed Near Me-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Listed Near Me-Info.plist"; sourceTree = "<group>"; };
 		C1C4F8D5B9D0BC8DCEC451BFA707F5DF /* FloatingPanel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FloatingPanel-dummy.m"; sourceTree = "<group>"; };
-		C64746AEA9EAECE0BE53BF2CE420B495 /* Pods_Listed_Near_Me.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Listed_Near_Me.framework; path = "Pods-Listed Near Me.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64746AEA9EAECE0BE53BF2CE420B495 /* Pods_Listed_Near_Me.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Listed_Near_Me.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFF47118F5FC47F9B00FF1743251585 /* Pods-Listed Near Me-Listed Near MeUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Listed Near Me-Listed Near MeUITests-dummy.m"; sourceTree = "<group>"; };
 		D0316BFE44EFA414E19ACB01008C7E3C /* Pods-Listed Near Me-Listed Near MeUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Listed Near Me-Listed Near MeUITests-frameworks.sh"; sourceTree = "<group>"; };
 		D0BB691F72972A452DAA078225788CD6 /* Position.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Position.swift; path = Sources/Position.swift; sourceTree = "<group>"; };
@@ -278,7 +278,6 @@
 				D19E08733FD8B0444FAC590906963BBF /* UIExtensions.swift */,
 				31D0C4FFB4B2ED4E31E4B27108ADB8D9 /* Support Files */,
 			);
-			name = FloatingPanel;
 			path = FloatingPanel;
 			sourceTree = "<group>";
 		};
@@ -422,7 +421,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -574,6 +573,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -668,7 +668,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/FloatingPanel/FloatingPanel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/FloatingPanel/FloatingPanel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -819,7 +819,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/FloatingPanel/FloatingPanel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/FloatingPanel/FloatingPanel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -903,6 +903,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
