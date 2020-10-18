@@ -78,7 +78,9 @@ class ListingsDatabase {
 extension ListingsDatabase {
     private func loadListings(with statement: OpaquePointer) throws -> [Listing] {
         var listings = [Listing]()
-        while sqlite3_step(statement) == SQLITE_ROW {
+        
+        var result = sqlite3_step(statement)
+        while result == SQLITE_ROW {
             guard let nameColumn = sqlite3_column_text(statement, 0),
                   let gradeColumn = sqlite3_column_text(statement, 1),
                   let listedDateColumn = sqlite3_column_text(statement, 2)
@@ -101,6 +103,10 @@ extension ListingsDatabase {
             )
             
             listings.append(listing)
+            result = sqlite3_step(statement)
+        }
+        guard result == SQLITE_DONE else {
+            throw DatabaseError.Step(message: errorMessage)
         }
         
         return listings
@@ -108,22 +114,22 @@ extension ListingsDatabase {
     
     func getNear(_ location: CLLocation) throws -> [Listing] {
         let query = """
-            SELECT
-                lb.name,
-                lb.grade,
-                lb.list_date,
-                Y(Transform(lb.geom, 4326)) "y",
-                X(Transform(lb.geom, 4326)) "x",
-                Distance(
-                    Transform(
-                        MakePoint(?, ?, 4326),
-                        27700
-                    ),
-                    lb.geom
-                ) "distance"
-            FROM listed_buildings lb
-            ORDER BY distance
-            LIMIT 25 OFFSET 0;
+        SELECT
+            lb.name,
+            lb.grade,
+            lb.list_date,
+            Y(Transform(lb.geom, 4326)) "y",
+            X(Transform(lb.geom, 4326)) "x",
+            Distance(
+                Transform(
+                    MakePoint(?, ?, 4326),
+                    27700
+                ),
+                lb.geom
+            ) "distance"
+        FROM listed_buildings lb
+        ORDER BY distance
+        LIMIT 25 OFFSET 0;
         """
         let stmnt = try prepareStatement(sql: query)
         defer {
@@ -142,27 +148,36 @@ extension ListingsDatabase {
     
     func withinBounds(_ rectangle: MKMapRect) throws -> [Listing] {
         let query = """
-            SELECT
-                lb.name,
-                lb.grade,
-                lb.list_date,
-                Y(Transform(lb.geom, 4326)) "y",
-                X(Transform(lb.geom, 4326)) "x"
-            FROM listed_buildings lb
-            WHERE Within(lb.geom, PolygonFromText(?, 4326)) IS TRUE
-            LIMIT 100
+        SELECT
+            lb.name,
+            lb.grade,
+            lb.list_date,
+            Y(Transform(lb.geom, 4326)) "y",
+            X(Transform(lb.geom, 4326)) "x"
+        FROM listed_buildings lb
+        WHERE Within(lb.geom, Transform(PolygonFromText(?, 4326), 27700)) > 0
         """
         let stmnt = try prepareStatement(sql: query)
         defer {
             sqlite3_finalize(stmnt)
         }
 
-        let rectangleWKT = "\(rectangle.minX), \(rectangle.minY), \(rectangle.maxX), \(rectangle.maxY)"
+        let rectangleWKT = """
+        POLYGON((
+            \(rectangle.corners.nw.longitude) \(rectangle.corners.nw.latitude),
+            \(rectangle.corners.ne.longitude) \(rectangle.corners.ne.latitude),
+            \(rectangle.corners.se.longitude) \(rectangle.corners.se.latitude),
+            \(rectangle.corners.sw.longitude) \(rectangle.corners.sw.latitude),
+            \(rectangle.corners.nw.longitude) \(rectangle.corners.nw.latitude)
+        ))
+        """
         guard
-            sqlite3_bind_text(stmnt, 1, rectangleWKT, -1, nil) == SQLITE_OK
+            sqlite3_bind_text(stmnt, 1, rectangleWKT, -1, SQLITE_TRANSIENT) == SQLITE_OK
         else {
             throw DatabaseError.Bind(message: errorMessage)
         }
+        
+        print(String(cString: sqlite3_expanded_sql(stmnt)))
         
         return try loadListings(with: stmnt)
     }
