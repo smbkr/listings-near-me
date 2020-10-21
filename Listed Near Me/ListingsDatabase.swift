@@ -156,6 +156,8 @@ extension ListingsDatabase {
             X(Transform(lb.geom, 4326)) "x"
         FROM listed_buildings lb
         WHERE Within(lb.geom, Transform(PolygonFromText(?, 4326), 27700)) > 0
+        AND _ROWID_ >= (abs(random()) % (SELECT max(_ROWID_) FROM listed_buildings))
+        LIMIT 1000;
         """
         let stmnt = try prepareStatement(sql: query)
         defer {
