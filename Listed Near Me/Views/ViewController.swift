@@ -91,6 +91,7 @@ class ViewController: UIViewController {
         mapView.showsCompass = true
         mapView.showsBuildings = true
         mapView.showsTraffic = false
+        mapView.pointOfInterestFilter = MKPointOfInterestFilter.excludingAll
         let ukRegion = MKCoordinateRegion(.world) // FIXME: Should only allow zooming to extent of UK
         mapView.setCameraBoundary(
             MKMapView.CameraBoundary(coordinateRegion: ukRegion),
