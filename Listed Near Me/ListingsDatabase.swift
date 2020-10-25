@@ -90,15 +90,15 @@ extension ListingsDatabase {
             let lat = sqlite3_column_double(statement, 3)
             let long = sqlite3_column_double(statement, 4)
             
-            let name = String(cString: nameColumn)
+            let title = String(cString: nameColumn)
             let grade = Grade.init(rawValue: String(cString: gradeColumn))
             let listedDate = String(cString: listedDateColumn)
             
-            let location = Location(long: long, lat: lat)
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             let listing = Listing(
-                name: name,
+                title: title,
                 grade: grade,
-                location: location,
+                coordinate: coordinate,
                 listedDate: listedDate
             )
             

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04248194E0F069BF14C3AD95 /* Pods_Listed_Near_Me_Listed_Near_MeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B20E15EF0F16036B916672 /* Pods_Listed_Near_Me_Listed_Near_MeUITests.framework */; };
 		84413701F1280F7CB32522AE /* Pods_Listed_Near_Me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D65FFCDB247342755EDB2239 /* Pods_Listed_Near_Me.framework */; };
+		B038193A254594AF00621DDF /* ListingAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0381939254594AF00621DDF /* ListingAnnotationView.swift */; };
 		B03C32F22517D50800AB5B62 /* MKMapView+ViewableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C32F12517D50800AB5B62 /* MKMapView+ViewableRegion.swift */; };
 		B04235E7BF0B0A19EF81BAEA /* Pods_Listed_Near_MeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC546677E2007AEF31F20C6 /* Pods_Listed_Near_MeTests.framework */; };
 		B056BF8A252BDB2A0098FBB0 /* listed_buildings.db in Resources */ = {isa = PBXBuildFile; fileRef = B056BF83252B69B60098FBB0 /* listed_buildings.db */; };
@@ -46,7 +47,6 @@
 		B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */; };
 		B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */; };
 		B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */; };
-		B0CC6EC1251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */; };
 		B0E45AF9253C70EC002D983B /* MKMapRect+boundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45AF8253C70EC002D983B /* MKMapRect+boundingBox.swift */; };
 		B0E45AFE253CB325002D983B /* SqliteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45AFD253CB325002D983B /* SqliteConstants.swift */; };
 		B0E45B0A253CB7D5002D983B /* LookAndFeel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45B09253CB7D5002D983B /* LookAndFeel.swift */; };
@@ -58,7 +58,6 @@
 		B0FB41F924EDAEAF00619CD4 /* Listed_Near_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41F824EDAEAF00619CD4 /* Listed_Near_MeUITests.swift */; };
 		B0FB420724EDAFD400619CD4 /* ListingsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420624EDAFD400619CD4 /* ListingsDatabase.swift */; };
 		B0FB420924EDB00200619CD4 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420824EDB00200619CD4 /* Listing.swift */; };
-		B0FB420C24EDB04600619CD4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420B24EDB04600619CD4 /* Location.swift */; };
 		B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB420D24EDB06D00619CD4 /* Grade.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +84,7 @@
 		81B20E15EF0F16036B916672 /* Pods_Listed_Near_Me_Listed_Near_MeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Listed_Near_Me_Listed_Near_MeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D674DC0A08FDDB93A7B494 /* Pods-Listed Near Me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Listed Near Me.release.xcconfig"; path = "Target Support Files/Pods-Listed Near Me/Pods-Listed Near Me.release.xcconfig"; sourceTree = "<group>"; };
 		A18F256CDF5457986C940461 /* Pods-Listed Near Me-Listed Near MeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Listed Near Me-Listed Near MeUITests.debug.xcconfig"; path = "Target Support Files/Pods-Listed Near Me-Listed Near MeUITests/Pods-Listed Near Me-Listed Near MeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B0381939254594AF00621DDF /* ListingAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingAnnotationView.swift; sourceTree = "<group>"; };
 		B03C32F12517D50800AB5B62 /* MKMapView+ViewableRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MKMapView+ViewableRegion.swift"; path = "Listed Near Me/Extensions/MKMapView+ViewableRegion.swift"; sourceTree = SOURCE_ROOT; };
 		B056BF83252B69B60098FBB0 /* listed_buildings.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = listed_buildings.db; sourceTree = "<group>"; };
 		B05E2C102533238D002625B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -515,7 +515,6 @@
 		B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocationDistance+HumanReadable.swift"; path = "Listed Near Me/Extensions/CLLocationDistance+HumanReadable.swift"; sourceTree = SOURCE_ROOT; };
 		B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+cornerRadius.swift"; sourceTree = "<group>"; };
 		B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+cornerRadius.swift"; sourceTree = "<group>"; };
-		B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+initFromLocation.swift"; sourceTree = "<group>"; };
 		B0E45AF8253C70EC002D983B /* MKMapRect+boundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapRect+boundingBox.swift"; sourceTree = "<group>"; };
 		B0E45AFD253CB325002D983B /* SqliteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteConstants.swift; sourceTree = "<group>"; };
 		B0E45B09253CB7D5002D983B /* LookAndFeel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAndFeel.swift; sourceTree = "<group>"; };
@@ -533,7 +532,6 @@
 		B0FB41FA24EDAEAF00619CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0FB420624EDAFD400619CD4 /* ListingsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsDatabase.swift; sourceTree = "<group>"; };
 		B0FB420824EDB00200619CD4 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
-		B0FB420B24EDB04600619CD4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B0FB420D24EDB06D00619CD4 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		C7AF22A258CE35B59309BE47 /* Pods-Listed Near MeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Listed Near MeTests.release.xcconfig"; path = "Target Support Files/Pods-Listed Near MeTests/Pods-Listed Near MeTests.release.xcconfig"; sourceTree = "<group>"; };
 		D19C1843CB58F8E201D81109 /* Pods-Listed Near Me-Listed Near MeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Listed Near Me-Listed Near MeUITests.release.xcconfig"; path = "Target Support Files/Pods-Listed Near Me-Listed Near MeUITests/Pods-Listed Near Me-Listed Near MeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -582,7 +580,6 @@
 		B06505CE251A8F05000E141D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B0CC6EC0251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift */,
 				B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */,
 				B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */,
 				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
@@ -1389,6 +1386,7 @@
 				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
 				B05E2C102533238D002625B9 /* ViewController.swift */,
 				B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */,
+				B0381939254594AF00621DDF /* ListingAnnotationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1458,7 +1456,6 @@
 			children = (
 				B0FB420824EDB00200619CD4 /* Listing.swift */,
 				B0FB420D24EDB06D00619CD4 /* Grade.swift */,
-				B0FB420B24EDB04600619CD4 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1734,15 +1731,14 @@
 			files = (
 				B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */,
 				B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */,
+				B038193A254594AF00621DDF /* ListingAnnotationView.swift in Sources */,
 				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
 				B05E2C112533238D002625B9 /* ViewController.swift in Sources */,
 				B0E45AF9253C70EC002D983B /* MKMapRect+boundingBox.swift in Sources */,
 				B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */,
-				B0FB420C24EDB04600619CD4 /* Location.swift in Sources */,
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
 				B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */,
 				B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */,
-				B0CC6EC1251A7D4100A625FB /* CLLocationCoordinate2D+initFromLocation.swift in Sources */,
 				B0FB420724EDAFD400619CD4 /* ListingsDatabase.swift in Sources */,
 				B03C32F22517D50800AB5B62 /* MKMapView+ViewableRegion.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,

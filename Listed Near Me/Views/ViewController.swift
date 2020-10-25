@@ -132,10 +132,8 @@ extension ViewController {
                 let listings = try self.listingsDB.withinBounds(self.mapView.visibleMapRect)
                 self.listings = listings.sorted { (a, b) -> Bool in
                     guard let currentLocation = self.currentLocation else { return true }
-                    let aLocation = CLLocation(latitude: a.location.lat, longitude: a.location.long)
-                    let bLocation = CLLocation(latitude: b.location.lat, longitude: b.location.long)
-                    let aDistance = currentLocation.distance(from: aLocation)
-                    let bDistance = currentLocation.distance(from: bLocation)
+                    let aDistance = currentLocation.distance(from: a.location)
+                    let bDistance = currentLocation.distance(from: b.location)
                     
                     return aDistance < bDistance
                 }
@@ -148,17 +146,7 @@ extension ViewController {
     
     private func reloadMapAnnotations() {
         mapView.removeAnnotations(mapView.annotations)
-        for listing in listings {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(
-                latitude: listing.location.lat, longitude: listing.location.long
-            )
-            annotation.title = listing.name
-            if let grade = listing.grade {
-                annotation.subtitle = "Grade \(grade)"
-            }
-            mapView.addAnnotation(annotation)
-        }
+        mapView.addAnnotations(listings)
     }
 }
 
@@ -202,9 +190,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "listing")
         let listing = listings[indexPath.row]
-        cell.textLabel?.text = listing.name
-        let listingLocation = CLLocation(latitude: listing.location.lat, longitude: listing.location.long)
-        let distance = currentLocation?.distance(from: listingLocation)
+        cell.textLabel?.text = listing.title
+        let distance = currentLocation?.distance(from: listing.location)
         cell.detailTextLabel?.text = distance?.humanReadableString()
         return cell
     }
