@@ -101,6 +101,10 @@ class ViewController: UIViewController {
             MKMapView.CameraZoomRange(minCenterCoordinateDistance: CLLocationDistance(750)),
             animated: true
         )
+        mapView.register(
+            ListingAnnotationView.self,
+            forAnnotationViewWithReuseIdentifier: ListingAnnotationViewReuseIdentifier
+        )
         
         view.addSubview(mapView)
 
@@ -168,6 +172,18 @@ extension ViewController: MKMapViewDelegate {
             }
         }
         return false
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let view = mapView.dequeueReusableAnnotationView(
+            withIdentifier: ListingAnnotationViewReuseIdentifier,
+            for: annotation
+        )
+        return view
     }
 }
 

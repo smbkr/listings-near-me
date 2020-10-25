@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class Listing: NSObject, MKAnnotation {
+class Listing: NSObject {
     var title: String?
     var grade: Grade?
     var listedDate: String?
@@ -21,6 +21,15 @@ class Listing: NSObject, MKAnnotation {
         }
     }
     
+    init(title: String, grade: Grade?, coordinate: CLLocationCoordinate2D, listedDate: String) {
+        self.title = title.localizedCapitalized // TODO: better capitalisation, postcode aware, etc.
+        self.grade = grade
+        self.coordinate = coordinate
+        self.listedDate = listedDate
+    }
+}
+
+extension Listing: MKAnnotation {
     var subtitle: String? {
         get {
             if let grade = grade {
@@ -28,12 +37,5 @@ class Listing: NSObject, MKAnnotation {
             }
             return nil
         }
-    }
-    
-    init(title: String, grade: Grade?, coordinate: CLLocationCoordinate2D, listedDate: String) {
-        self.title = title.localizedCapitalized // TODO: better capitalisation, postcode aware, etc.
-        self.grade = grade
-        self.coordinate = coordinate
-        self.listedDate = listedDate
     }
 }

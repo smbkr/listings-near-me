@@ -9,14 +9,15 @@
 import UIKit
 import MapKit
 
-class ListingAnnotationView: MKAnnotationView {
+let ListingAnnotationViewReuseIdentifier = "listing"
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class ListingAnnotationView: MKMarkerAnnotationView {
+    override var annotation: MKAnnotation? {
+        willSet {
+            if newValue is Listing {
+                markerTintColor = Theme.ListingColor
+                clusteringIdentifier = "listing"
+            }
+        }
     }
-    */
-
 }
