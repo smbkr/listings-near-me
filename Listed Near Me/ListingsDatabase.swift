@@ -112,40 +112,6 @@ extension ListingsDatabase {
         return listings
     }
     
-    func getNear(_ location: CLLocation) throws -> [Listing] {
-        let query = """
-        SELECT
-            lb.name,
-            lb.grade,
-            lb.list_date,
-            Y(Transform(lb.geom, 4326)) "y",
-            X(Transform(lb.geom, 4326)) "x",
-            Distance(
-                Transform(
-                    MakePoint(?, ?, 4326),
-                    27700
-                ),
-                lb.geom
-            ) "distance"
-        FROM listed_buildings lb
-        ORDER BY distance
-        LIMIT 25 OFFSET 0;
-        """
-        let stmnt = try prepareStatement(sql: query)
-        defer {
-            sqlite3_finalize(stmnt)
-        }
-
-        guard
-            sqlite3_bind_double(stmnt, 1, Double(location.coordinate.longitude)) == SQLITE_OK,
-            sqlite3_bind_double(stmnt, 2, Double(location.coordinate.latitude)) == SQLITE_OK
-        else {
-            throw DatabaseError.Bind(message: errorMessage)
-        }
-        
-        return try loadListings(with: stmnt)
-    }
-    
     func withinBounds(_ rectangle: MKMapRect) throws -> [Listing] {
         let query = """
         SELECT
@@ -178,8 +144,6 @@ extension ListingsDatabase {
         else {
             throw DatabaseError.Bind(message: errorMessage)
         }
-        
-        print(String(cString: sqlite3_expanded_sql(stmnt)))
         
         return try loadListings(with: stmnt)
     }
