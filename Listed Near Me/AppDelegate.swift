@@ -41,9 +41,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: Location Manager
 
+extension NSNotification.Name {
+  static let LocationUpdated = NSNotification.Name(rawValue: "location_updated")
+}
+
 extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        currentLocation = locations.first
+        NotificationCenter.default.post(
+            Notification(name: .LocationUpdated, object: self, userInfo: ["location": locations.first])
+        )
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

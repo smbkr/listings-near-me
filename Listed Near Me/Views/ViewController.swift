@@ -45,6 +45,11 @@ class ViewController: UIViewController {
         setupMapView()
         setupTableView()
         setupFloatingPanel()
+        NotificationCenter.default.addObserver(forName: .LocationUpdated, object: nil, queue: nil) { (notification) in
+            if let newLocation = notification.userInfo?["location"] as? CLLocation {
+                self.currentLocation = newLocation
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
