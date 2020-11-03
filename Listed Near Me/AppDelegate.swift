@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configureAppearance() -> Void {
-        UIButton.appearance().cornerRadius = 8;
+        UIButton.appearance().cornerRadius = Theme.buttonRadius
     }
 
 }

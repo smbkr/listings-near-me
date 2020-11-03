@@ -15,7 +15,7 @@ class ListingAnnotationView: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {
             if newValue is Listing {
-                markerTintColor = Theme.ListingColor
+                markerTintColor = Theme.listingColor
                 clusteringIdentifier = "listing"
             }
         }

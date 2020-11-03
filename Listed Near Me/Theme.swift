@@ -10,5 +10,6 @@ import Foundation
 import UIKit
 
 struct Theme {
-    static let ListingColor: UIColor = .orange
+    static let listingColor: UIColor = .orange
+    static let buttonRadius = CGFloat(8)
 }
