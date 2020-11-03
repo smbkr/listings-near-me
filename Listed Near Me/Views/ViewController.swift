@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     /// Sub-views
     private var floatingPanel = FloatingPanelController()
-    private var listingsTableView = UITableView()
+    private var listingsTable = ListingsTableViewController()
     private var mapView = MKMapView()
     private var statusBarBlurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     private var listings = [Listing]() {
         didSet {
             DispatchQueue.main.async {
-                self.listingsTableView.reloadData()
+                self.listingsTable.listings = self.listings
                 self.reloadMapAnnotations()
             }
         }
@@ -43,7 +43,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView()
-        setupTableView()
         setupFloatingPanel()
         NotificationCenter.default.addObserver(forName: .LocationUpdated, object: nil, queue: nil) { (notification) in
             if let newLocation = notification.userInfo?["location"] as? CLLocation {
@@ -57,22 +56,9 @@ class ViewController: UIViewController {
         blurStatusBar()
     }
     
-    private func setupTableView() {
-        listingsTableView.dataSource = self
-        listingsTableView.delegate = self
-    }
-    
     private func setupFloatingPanel() {
-        let tableViewController = UIViewController()
-        tableViewController.view.addSubview(listingsTableView)
-        listingsTableView.translatesAutoresizingMaskIntoConstraints = false
-        listingsTableView.topAnchor.constraint(equalTo: tableViewController.view.topAnchor).isActive = true
-        listingsTableView.leftAnchor.constraint(equalTo: tableViewController.view.leftAnchor).isActive = true
-        listingsTableView.bottomAnchor.constraint(equalTo: tableViewController.view.bottomAnchor).isActive = true
-        listingsTableView.rightAnchor.constraint(equalTo: tableViewController.view.rightAnchor).isActive = true
-        
-        floatingPanel.set(contentViewController: tableViewController)
-        floatingPanel.track(scrollView: listingsTableView)
+        floatingPanel.set(contentViewController: listingsTable)
+        floatingPanel.track(scrollView: listingsTable.tableView)
         floatingPanel.layout = FloatingPanelBottomTipLayout()
         floatingPanel.addPanel(toParent: self)
         
@@ -183,22 +169,5 @@ extension ViewController: MKMapViewDelegate {
             for: annotation
         )
         return view
-    }
-}
-
-// MARK: Table View
-
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "listing")
-        let listing = listings[indexPath.row]
-        cell.textLabel?.text = listing.title
-        let distance = currentLocation?.distance(from: listing.location)
-        cell.detailTextLabel?.text = distance?.humanReadableString()
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listings.count
     }
 }
