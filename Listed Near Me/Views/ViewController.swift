@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     
     /// Internal state
     private var statusBarWasBlurred = false
-    private var locationManager = CLLocationManager()
     private var currentLocation: CLLocation? {
         didSet {
             if mapViewRegionDidChangeFromUserInteraction() == false {
@@ -77,12 +76,7 @@ class ViewController: UIViewController {
         floatingPanel.surfaceView.contentPadding.top = 30
     }
     
-    private func setupMapView() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        
+    private func setupMapView() {        
         mapView.delegate = self
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
@@ -184,19 +178,6 @@ extension ViewController: MKMapViewDelegate {
             for: annotation
         )
         return view
-    }
-}
-
-// MARK: Location Manager
-
-extension ViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = locations.first
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // FIXME
-        print(error)
     }
 }
 
