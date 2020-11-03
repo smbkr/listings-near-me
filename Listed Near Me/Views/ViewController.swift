@@ -16,9 +16,9 @@ class ViewController: UIViewController {
     private var floatingPanel = FloatingPanelController()
     private var listingsTableView = UITableView()
     private var mapView = MKMapView()
+    private var statusBarBlurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     
     /// Internal state
-    private var statusBarWasBlurred = false
     private var currentLocation: CLLocation? {
         didSet {
             if mapViewRegionDidChangeFromUserInteraction() == false {
@@ -53,6 +53,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         blurStatusBar()
     }
     
@@ -115,13 +116,12 @@ class ViewController: UIViewController {
     }
     
     private func blurStatusBar() -> Void {
-        if statusBarWasBlurred { return }
         let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
         if let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame {
-            let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-            blurEffectView.frame = statusBarFrame
-            view.addSubview(blurEffectView)
-            statusBarWasBlurred = true
+            statusBarBlurView.frame = statusBarFrame
+            view.addSubview(statusBarBlurView)
+        } else {
+            statusBarBlurView.removeFromSuperview()
         }
     }
 }
