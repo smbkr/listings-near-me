@@ -49,7 +49,9 @@
 		B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */; };
 		B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */; };
 		B0BB07B3255169F3008CBC92 /* ListingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB07B2255169F3008CBC92 /* ListingsTableViewController.swift */; };
-		B0E45AF9253C70EC002D983B /* MKMapRect+boundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45AF8253C70EC002D983B /* MKMapRect+boundingBox.swift */; };
+		B0BB07B825516D17008CBC92 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB07B725516D17008CBC92 /* MapViewController.swift */; };
+		B0BB07C02551B131008CBC92 /* MKCoordinateRegion+UK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB07BF2551B131008CBC92 /* MKCoordinateRegion+UK.swift */; };
+		B0E45AF9253C70EC002D983B /* MKMapRect+corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45AF8253C70EC002D983B /* MKMapRect+corners.swift */; };
 		B0E45AFE253CB325002D983B /* SqliteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45AFD253CB325002D983B /* SqliteConstants.swift */; };
 		B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */; };
 		B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D824EDAEAC00619CD4 /* SceneDelegate.swift */; };
@@ -518,7 +520,9 @@
 		B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+cornerRadius.swift"; sourceTree = "<group>"; };
 		B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+cornerRadius.swift"; sourceTree = "<group>"; };
 		B0BB07B2255169F3008CBC92 /* ListingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsTableViewController.swift; sourceTree = "<group>"; };
-		B0E45AF8253C70EC002D983B /* MKMapRect+boundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapRect+boundingBox.swift"; sourceTree = "<group>"; };
+		B0BB07B725516D17008CBC92 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B0BB07BF2551B131008CBC92 /* MKCoordinateRegion+UK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+UK.swift"; sourceTree = "<group>"; };
+		B0E45AF8253C70EC002D983B /* MKMapRect+corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapRect+corners.swift"; sourceTree = "<group>"; };
 		B0E45AFD253CB325002D983B /* SqliteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteConstants.swift; sourceTree = "<group>"; };
 		B0FB41D324EDAEAC00619CD4 /* Listed Near Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Listed Near Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -586,7 +590,8 @@
 				B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */,
 				B09B6CD42517A1540012542A /* MKMapView+cornerRadius.swift */,
 				B03C32F12517D50800AB5B62 /* MKMapView+ViewableRegion.swift */,
-				B0E45AF8253C70EC002D983B /* MKMapRect+boundingBox.swift */,
+				B0E45AF8253C70EC002D983B /* MKMapRect+corners.swift */,
+				B0BB07BF2551B131008CBC92 /* MKCoordinateRegion+UK.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1387,6 +1392,7 @@
 			children = (
 				B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */,
 				B05E2C102533238D002625B9 /* ViewController.swift */,
+				B0BB07B725516D17008CBC92 /* MapViewController.swift */,
 				B0BB07B2255169F3008CBC92 /* ListingsTableViewController.swift */,
 				B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */,
 				B0381939254594AF00621DDF /* ListingAnnotationView.swift */,
@@ -1738,8 +1744,10 @@
 				B03819572545AA9E00621DDF /* Theme.swift in Sources */,
 				B0FB420924EDB00200619CD4 /* Listing.swift in Sources */,
 				B05E2C112533238D002625B9 /* ViewController.swift in Sources */,
-				B0E45AF9253C70EC002D983B /* MKMapRect+boundingBox.swift in Sources */,
+				B0E45AF9253C70EC002D983B /* MKMapRect+corners.swift in Sources */,
+				B0BB07B825516D17008CBC92 /* MapViewController.swift in Sources */,
 				B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */,
+				B0BB07C02551B131008CBC92 /* MKCoordinateRegion+UK.swift in Sources */,
 				B0BB07B3255169F3008CBC92 /* ListingsTableViewController.swift in Sources */,
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
 				B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */,
