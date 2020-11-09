@@ -13,3 +13,20 @@ struct Theme {
     static let listingColor: UIColor = .orange
     static let buttonRadius = CGFloat(8)
 }
+
+extension Listing {
+    var color: UIColor {
+        get {
+            switch grade {
+            case .I:
+                return .systemPurple
+            case .IIs:
+                return .systemOrange
+            case .II:
+                return .systemTeal
+            default:
+                return .systemGray2
+            }
+        }
+    }
+}

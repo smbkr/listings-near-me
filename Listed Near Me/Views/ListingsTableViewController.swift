@@ -16,9 +16,13 @@ class ListingsTableViewController: UITableViewController {
         }
     }
     private var currentLocation: CLLocation?
+    private let cellReuseId = "listing"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(ListingTableViewCell.self, forCellReuseIdentifier: cellReuseId)
+        
         NotificationCenter.default.addObserver(forName: .LocationUpdated, object: nil, queue: nil) { (notification) in
             if let newLocation = notification.userInfo?["location"] as? CLLocation {
                 self.currentLocation = newLocation
@@ -27,11 +31,9 @@ class ListingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "listing")
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId, for: indexPath) as! ListingTableViewCell
         let listing = listings[indexPath.row]
-        cell.textLabel?.text = listing.title
-        let distance = currentLocation?.distance(from: listing.location)
-        cell.detailTextLabel?.text = distance?.humanReadableString()
+        cell.listing = listing
         return cell
     }
     

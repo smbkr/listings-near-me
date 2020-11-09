@@ -44,6 +44,7 @@
 		B06A618925209347006229A7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A618825209347006229A7 /* libc++.tbd */; };
 		B06A618E2520934F006229A7 /* libcharset.1.0.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A618D2520934F006229A7 /* libcharset.1.0.0.tbd */; };
 		B06A619325209354006229A7 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A619225209354006229A7 /* libiconv.tbd */; };
+		B086F6D32559AE0E0077F036 /* UIImage+imageWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086F6D22559AE0E0077F036 /* UIImage+imageWithLabel.swift */; };
 		B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */; };
 		B096AFE525139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */; };
 		B09B6CD32517A0D00012542A /* UIButton+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */; };
@@ -51,6 +52,7 @@
 		B0BB07B3255169F3008CBC92 /* ListingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB07B2255169F3008CBC92 /* ListingsTableViewController.swift */; };
 		B0BB07B825516D17008CBC92 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB07B725516D17008CBC92 /* MapViewController.swift */; };
 		B0BB07C02551B131008CBC92 /* MKCoordinateRegion+UK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB07BF2551B131008CBC92 /* MKCoordinateRegion+UK.swift */; };
+		B0BB07C52551CA9C008CBC92 /* ListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB07C42551CA9C008CBC92 /* ListingTableViewCell.swift */; };
 		B0E45AF9253C70EC002D983B /* MKMapRect+corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45AF8253C70EC002D983B /* MKMapRect+corners.swift */; };
 		B0E45AFE253CB325002D983B /* SqliteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E45AFD253CB325002D983B /* SqliteConstants.swift */; };
 		B0FB41D724EDAEAC00619CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB41D624EDAEAC00619CD4 /* AppDelegate.swift */; };
@@ -515,6 +517,7 @@
 		B06A618D2520934F006229A7 /* libcharset.1.0.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcharset.1.0.0.tbd; path = usr/lib/libcharset.1.0.0.tbd; sourceTree = SDKROOT; };
 		B06A619225209354006229A7 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		B06A619725209372006229A7 /* bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging.h; sourceTree = "<group>"; };
+		B086F6D22559AE0E0077F036 /* UIImage+imageWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+imageWithLabel.swift"; sourceTree = "<group>"; };
 		B096AFE225139E4B00A9BA58 /* Double+RoundedToPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+RoundedToPlaces.swift"; sourceTree = "<group>"; };
 		B096AFE425139E9100A9BA58 /* CLLocationDistance+HumanReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocationDistance+HumanReadable.swift"; path = "Listed Near Me/Extensions/CLLocationDistance+HumanReadable.swift"; sourceTree = SOURCE_ROOT; };
 		B09B6CD22517A0D00012542A /* UIButton+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+cornerRadius.swift"; sourceTree = "<group>"; };
@@ -522,6 +525,7 @@
 		B0BB07B2255169F3008CBC92 /* ListingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsTableViewController.swift; sourceTree = "<group>"; };
 		B0BB07B725516D17008CBC92 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B0BB07BF2551B131008CBC92 /* MKCoordinateRegion+UK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+UK.swift"; sourceTree = "<group>"; };
+		B0BB07C42551CA9C008CBC92 /* ListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingTableViewCell.swift; sourceTree = "<group>"; };
 		B0E45AF8253C70EC002D983B /* MKMapRect+corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapRect+corners.swift"; sourceTree = "<group>"; };
 		B0E45AFD253CB325002D983B /* SqliteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteConstants.swift; sourceTree = "<group>"; };
 		B0FB41D324EDAEAC00619CD4 /* Listed Near Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Listed Near Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -592,6 +596,7 @@
 				B03C32F12517D50800AB5B62 /* MKMapView+ViewableRegion.swift */,
 				B0E45AF8253C70EC002D983B /* MKMapRect+corners.swift */,
 				B0BB07BF2551B131008CBC92 /* MKCoordinateRegion+UK.swift */,
+				B086F6D22559AE0E0077F036 /* UIImage+imageWithLabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1394,6 +1399,7 @@
 				B05E2C102533238D002625B9 /* ViewController.swift */,
 				B0BB07B725516D17008CBC92 /* MapViewController.swift */,
 				B0BB07B2255169F3008CBC92 /* ListingsTableViewController.swift */,
+				B0BB07C42551CA9C008CBC92 /* ListingTableViewCell.swift */,
 				B05E2C4525336A8F002625B9 /* FloatingPanelBottomTipLayout.swift */,
 				B0381939254594AF00621DDF /* ListingAnnotationView.swift */,
 			);
@@ -1748,6 +1754,7 @@
 				B0BB07B825516D17008CBC92 /* MapViewController.swift in Sources */,
 				B09B6CD52517A1540012542A /* MKMapView+cornerRadius.swift in Sources */,
 				B0BB07C02551B131008CBC92 /* MKCoordinateRegion+UK.swift in Sources */,
+				B086F6D32559AE0E0077F036 /* UIImage+imageWithLabel.swift in Sources */,
 				B0BB07B3255169F3008CBC92 /* ListingsTableViewController.swift in Sources */,
 				B0FB420E24EDB06D00619CD4 /* Grade.swift in Sources */,
 				B096AFE325139E4B00A9BA58 /* Double+RoundedToPlaces.swift in Sources */,
@@ -1756,6 +1763,7 @@
 				B03C32F22517D50800AB5B62 /* MKMapView+ViewableRegion.swift in Sources */,
 				B0FB41D924EDAEAC00619CD4 /* SceneDelegate.swift in Sources */,
 				B05E2C4E25338B9F002625B9 /* Debounce.swift in Sources */,
+				B0BB07C52551CA9C008CBC92 /* ListingTableViewCell.swift in Sources */,
 				B05E2C4625336A8F002625B9 /* FloatingPanelBottomTipLayout.swift in Sources */,
 				B0E45AFE253CB325002D983B /* SqliteConstants.swift in Sources */,
 			);

@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
         
         configureAppearance()
         
@@ -29,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = ViewController()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
+        
+        // Do this last so we have the opportunity to provide
+        // the location to our View Controllers
+        locationManager.requestLocation()
         
         return true
     }
