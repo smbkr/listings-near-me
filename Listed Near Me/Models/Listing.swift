@@ -7,17 +7,35 @@
 //
 
 import Foundation
+import MapKit
 
-struct Listing {
-    var location: Location
+class Listing: NSObject {
+    var title: String?
     var grade: Grade?
-    var listedDate: String
-    var name: String
+    var listedDate: String?
+    var coordinate: CLLocationCoordinate2D
     
-    init(name: String, grade: Grade?, location: Location, listedDate: String) {
-        self.name = name.localizedCapitalized
+    var location: CLLocation {
+        get {
+            return CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        }
+    }
+    
+    init(title: String, grade: Grade?, coordinate: CLLocationCoordinate2D, listedDate: String) {
+        self.title = title.localizedCapitalized // TODO: better capitalisation, postcode aware, etc.
         self.grade = grade
-        self.location = location
+        self.coordinate = coordinate
         self.listedDate = listedDate
+    }
+}
+
+extension Listing: MKAnnotation {
+    var subtitle: String? {
+        get {
+            if let grade = grade {
+                return "Grade \(grade)"
+            }
+            return nil
+        }
     }
 }
