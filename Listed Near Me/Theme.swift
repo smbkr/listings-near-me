@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FloatingPanel
 
 struct Theme {
     static let listingColor: UIColor = .orange
@@ -28,5 +29,20 @@ extension Listing {
                 return .systemGray2
             }
         }
+    }
+}
+
+extension FloatingPanelController {
+    func setAppearance() {
+        let appearance = SurfaceAppearance()
+        appearance.cornerRadius = 8
+        let shadow = SurfaceAppearance.Shadow()
+        shadow.color = .black
+        shadow.offset = CGSize(width: 0, height: 16)
+        shadow.radius = 16
+        shadow.spread = 8
+        appearance.shadows = [shadow]
+        surfaceView.appearance = appearance
+        surfaceView.contentPadding.top = 16
     }
 }

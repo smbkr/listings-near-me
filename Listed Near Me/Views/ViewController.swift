@@ -14,27 +14,35 @@ class ViewController: UIViewController {
     
     /// Sub-views
     private var floatingPanel = FloatingPanelController()
-    private var tableViewController = ListingsTableViewController()
-    private var mapViewController = MapViewController()
     private var statusBarBlurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+    private var mapView = MKMapView()
     
     /// Internal state
     private var pendingListingsRequest: DispatchWorkItem?
+    private var currentLocation: CLLocation? {
+        didSet {
+            if mapView.regionDidChangeFromUserInteraction() == false {
+                guard let currentLocation = currentLocation else { return }
+                mapView.centerOnLocation(currentLocation)
+            }
+        }
+    }
+    private let zoomMin = 500
+    private let zoomMax = 6000 * 500
     
-    /// Models
+    /// Data
     private let listingsDB = try! ListingsDatabase.open()
     private var listings = [Listing]() {
         didSet {
-            self.tableViewController.listings = self.listings
-            self.mapViewController.listings = self.listings
+            print("Received \(listings.count) listings")
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.addAnnotations(listings)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(mapViewController.view)
-        self.addChild(mapViewController)
-        mapViewController.didMove(toParent: self)
+        setupMapView()
         setupFloatingPanel()
     }
     
@@ -43,16 +51,56 @@ class ViewController: UIViewController {
         blurStatusBar()
     }
     
-    private func setupFloatingPanel() {
-        floatingPanel.set(contentViewController: tableViewController)
-        floatingPanel.track(scrollView: tableViewController.tableView)
-        floatingPanel.layout = FloatingPanelBottomTipLayout()
-        floatingPanel.addPanel(toParent: self)
+    private func setupMapView() {
+        mapView.delegate = self
+        mapView.isZoomEnabled = true
+        mapView.isScrollEnabled = true
+        mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.showsCompass = true
+        mapView.showsBuildings = true
+        mapView.showsTraffic = false
+        mapView.pointOfInterestFilter = MKPointOfInterestFilter.excludingAll
         
-        let appearance = SurfaceAppearance()
-        appearance.cornerRadius = 8
-        floatingPanel.surfaceView.appearance = appearance
-        floatingPanel.surfaceView.contentPadding.top = 30
+        mapView.setCameraBoundary(
+            MKMapView.CameraBoundary(coordinateRegion: MKCoordinateRegion.England),
+            animated: true
+        )
+        
+        mapView.setCameraZoomRange(
+            MKMapView.CameraZoomRange(
+                minCenterCoordinateDistance: CLLocationDistance(zoomMin),
+                maxCenterCoordinateDistance: CLLocationDistance(zoomMax)
+            ),
+            animated: true
+        )
+        
+        if currentLocation == nil {
+            let center = CLLocation(
+                latitude: MKCoordinateRegion.England.center.latitude,
+                longitude: MKCoordinateRegion.England.center.longitude
+            )
+            mapView.centerOnLocation(center, radiusMeters: Double(zoomMax))
+        }
+        
+        mapView.register(
+            ListingAnnotationView.self,
+            forAnnotationViewWithReuseIdentifier: ListingAnnotationViewReuseIdentifier
+        )
+        
+        view.addSubview(mapView)
+        
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    }
+    
+    private func setupFloatingPanel() {
+        floatingPanel.layout = FloatingPanelBottomLayout()
+        floatingPanel.isRemovalInteractionEnabled = true
+        floatingPanel.setAppearance()
     }
     
     private func blurStatusBar() -> Void {
@@ -66,18 +114,42 @@ class ViewController: UIViewController {
     }
 }
 
-// MARK: Listings
+// MARK: - Listings
 
 extension ViewController {
-    // FIXME This is terrible, reimplement using delegate
     public func refreshListings() {
         Debouncer.shared.perform(afterDelayMs: 500) { [self] in
             do {
-                self.listings = try self.listingsDB.withinBounds(self.mapViewController.visibleMapRect)
+                self.listings = try self.listingsDB.withinBounds(self.mapView.visibleMapRect)
             } catch let error {
                 // FIXME
                 print(error)
             }
         }
+    }
+}
+
+// MARK: - Map View Delegate
+
+extension ViewController: MKMapViewDelegate {
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+        refreshListings()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let view = mapView.dequeueReusableAnnotationView(
+            withIdentifier: ListingAnnotationViewReuseIdentifier,
+            for: annotation
+        )
+        return view
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let listing = view.annotation as? Listing else { return }
+        print("Selected \(listing)")
     }
 }
