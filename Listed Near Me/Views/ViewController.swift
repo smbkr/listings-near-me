@@ -18,17 +18,7 @@ class ViewController: UIViewController {
     private var mapView = MKMapView()
     
     /// Internal state
-    private var pendingListingsRequest: DispatchWorkItem?
-    private var currentLocation: CLLocation? {
-        didSet {
-            if mapView.regionDidChangeFromUserInteraction() == false {
-                guard let currentLocation = currentLocation else { return }
-                mapView.centerOnLocation(currentLocation)
-            }
-        }
-    }
-    private let zoomMin = 500
-    private let zoomMax = 6000 * 500
+    private var currentLocation: CLLocation?
     
     /// Data
     private let listingsDB = try! ListingsDatabase.open()
@@ -52,6 +42,9 @@ class ViewController: UIViewController {
     }
     
     private func setupMapView() {
+        let zoomMin = 500
+        let zoomMax = 6000 * zoomMin
+        
         mapView.delegate = self
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
@@ -75,7 +68,9 @@ class ViewController: UIViewController {
             animated: true
         )
         
-        if currentLocation == nil {
+        if let currentLocation = currentLocation {
+            mapView.centerOnLocation(currentLocation)
+        } else {
             let center = CLLocation(
                 latitude: MKCoordinateRegion.England.center.latitude,
                 longitude: MKCoordinateRegion.England.center.longitude
@@ -145,11 +140,11 @@ extension ViewController: MKMapViewDelegate {
             withIdentifier: ListingAnnotationViewReuseIdentifier,
             for: annotation
         )
+        
         return view
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let listing = view.annotation as? Listing else { return }
-        print("Selected \(listing)")
-    }
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//        guard let listing = view.annotation as? Listing else { return }
+//    }
 }

@@ -33,13 +33,17 @@ extension MKMapView
     }
     
     func centerOnLocation(
-      _ location: CLLocation,
-      radiusMeters: CLLocationDistance = 1000
+        _ location: CLLocation,
+        radiusMeters: CLLocationDistance? = nil
     ) {
-      let coordinateRegion = MKCoordinateRegion(
-        center: location.coordinate,
-        latitudinalMeters: radiusMeters,
-        longitudinalMeters: radiusMeters)
-      setRegion(coordinateRegion, animated: true)
+        if let radiusMeters = radiusMeters {
+            let coordinateRegion = MKCoordinateRegion(
+                center: location.coordinate,
+                latitudinalMeters: radiusMeters,
+                longitudinalMeters: radiusMeters)
+            setRegion(coordinateRegion, animated: true)
+        } else {
+            setCenter(location.coordinate, animated: true)
+        }
     }
 }

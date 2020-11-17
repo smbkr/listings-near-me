@@ -32,10 +32,21 @@ class Listing: NSObject {
 extension Listing: MKAnnotation {
     var subtitle: String? {
         get {
-            if let grade = grade {
-                return "Grade \(grade)"
+            let grade = self.grade?.description ?? "Unknown"
+            return "Grade \(grade)" // TODO: "Grade II* | 26 minutes (11.3 mi)"
+        }
+    }
+}
+
+extension Listing {
+    var displayPriority: MKFeatureDisplayPriority {
+        get {
+            switch grade {
+            case .I:
+                return .defaultHigh
+            default:
+                return .defaultLow
             }
-            return nil
         }
     }
 }
